@@ -58,7 +58,7 @@ class Books extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'provider0' => array(self::BELONGS_TO, 'Users', 'provider'),
+			'providerdetail' => array(self::BELONGS_TO, 'Users', 'provider'),
 			'courseBooks' => array(self::HAS_MANY, 'CourseBook', 'book_id'),
 		);
 	}

@@ -1,0 +1,62 @@
+/* overrides for ui-tab styles */
+.ui-tabs { position: relative; padding: 0em; zoom: 1; } /* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+
+ ul.ui-tabs-nav { padding:0 0 0 8px; }
+.ui-tabs-nav li { margin:5px 5px 0 0; }
+
+.ui-tabs-nav li a:link,
+.ui-tabs-nav li a:visited,
+.ui-tabs-nav li a:hover,
+.ui-tabs-nav li a:active { font-size:14px; padding:2px 1.2em 2px; color:#aaa; }
+
+ .ui-tabs-nav li.ui-tabs-selected a:link,
+ .ui-tabs-nav li.ui-tabs-selected a:visited,
+.ui-tabs-nav li.ui-tabs-selected a:hover,
+.ui-tabs-nav li.ui-tabs-selected a:active { color:#e6820E; }
+
+ .ui-tabs-panel { padding:10px 1px; font-size:12px; line-height:1.4; color:#000; }
+
+ .ui-widget-content a:link,
+ .ui-widget-content a:visited { color:#1b75bb; text-decoration:none; }
+ .ui-widget-content a:hover,
+ .ui-widget-content a:active { color:#0b559b; }
+.ui-widget-header { 
+	border: 1px solid #e78f08; 
+	background: #f6a828 url(images/ui-bg_gloss-wave_35_f6a828_500x100.png) 
+	            50% 50% repeat-x; color: #ffffff; font-weight: bold;
+}
+.ui-corner-all{
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
+}
+.ui-corner-top{
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	border-radius: 0px;
+}
+.ui-widget-content{
+	background:#fff;
+}
+
+.search-box{
+	width:520px;
+}
+.search-box #tabs .search-input{
+	font-size: 15px;
+	font-family: verdana,tahoma,sans-serif;
+	width: 400px;
+	line-height: 18px;
+	padding: 5px 0;
+	border: 0 none;
+	background-color: white;
+	border:1px solid #ddd;
+}
+.search-box .search-botton{
+	font: 15px arial,sans-serif;
+	padding:5px 10px;
+	width: 70px;
+	line-height: 18px;
+	border: 1px solid #aaa;
+}
+

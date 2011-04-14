@@ -19,7 +19,7 @@ class SearchController extends Controller
 	 */
 	public function actionSBooksbCourse()
 	{
-		$searchCourse = $_GET ["course"];
+		$searchCourse = trim($_REQUEST ["course"]);
 		$sql = "select * from course where course_name like '%$searchCourse%'";
 		$courses = Course::model ()->findAllBySql ( $sql );
 		$result = array ();
@@ -47,19 +47,14 @@ class SearchController extends Controller
 	 */
 	public function actionSCourse()
 	{
-		$searchCourse = $_POST ["course"];
+		$searchCourse = trim($_REQUEST ["course"]);
 		if (isset ( $searchCourse ))
 		{
 			$sql = "select * from course where course_name like '%$searchCourse%'";
 			$courses = Course::model ()->findAllBySql ( $sql );
-			$result = array ();
-			foreach ( $courses as $course )
-			{
-				$result [] = $course->course_name;
-			}
-			echo json_encode ( $result );
 		}
-		Yii::app ()->end ();
+		
+		$this->render('scourse', array('q'=>$searchCourse, 'courseList' => $courses));
 	}
 	
 	/**
@@ -68,40 +63,54 @@ class SearchController extends Controller
 	 */
 	public function actionSCourseBTeacher()
 	{
-		$searchCourse = $_POST ["teacher"];
+		$searchCourse = trim($_REQUEST ["teacher"]);
 		if (isset ( $searchCourse ))
 		{
 			$sql = "select * from teacher where teacher_name like '%$searchCourse%'";
 			$teachers = Teacher::model ()->findAllBySql ( $sql );
-			$results = array ();
 			
+			$results = array ();
 			foreach ( $teachers as $teacher )
 			{
 			    $teacher_info = array();
 			    $teacher_info["t_name"] = $teacher->teacher_name;
+			    $teacher_info["t_id"] = $teacher->teacher_id;
 			    
+			    //获取Course的ID组
 				$courses_id = array ();
 				$classes = $teacher->actualclasses;
 				foreach ($classes as $class) {
 				    $courses_id [] = $class->course_id;
 				}
-				array_unique ( $courses_id );
+				$courses_id = array_unique ( $courses_id );
+				
+				//分别获取Course的详细信息
 				$courses = array ();
 				foreach ( $courses_id as $course_id )
 				{
-					$courses [] = Course::model ()->find ( "course_id", $course_id );
+					$courses [] = Course::model ()->findByPk ( $course_id );
 				}
-				$m = array ();
-				foreach ( $courses as $course )
-				{
-					$m[] = $course->course_name;
-				}
-				$teacher_info["courses"] = $m;
+				
+				$teacher_info["courses"] = $courses;
 				$results[] = $teacher_info;
-			}	
-			echo json_encode ( $results );
+			}
+			
+			$this->render('SCourseBTeacher', array('teacherList'=>$results));
+		}else{
+		    $this->redirect('index.php?r=cs');
 		}
-		Yii::app ()->end ();
+	}
+	
+	public function actionSBook(){
+	    $bookName = trim($_REQUEST ["book"]);
+	    if($bookName){
+    		$sql = "select * from books where book_name like '%$bookName%'";
+    		$books = Books::model ()->findAllBySql ( $sql );
+    		
+    		$this->render('sbook', array('bookList'=>$books, 'q'=>$bookName));
+	    }else{
+	        $this->redirect('index.php?r=cs');
+	    }
 	}
 
 	// Uncomment the following methods and override them if needed
