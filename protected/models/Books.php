@@ -44,6 +44,11 @@ class Books extends CActiveRecord
 			array('book_name', 'length', 'max'=>128),
 			array('isbn', 'length', 'max'=>32),
 			array('provider', 'length', 'max'=>10),
+			array('cover_path', 'length', 'max'=>128),
+			array('cover_provider', 'length', 'max'=>10),
+			array('comment', 'length', 'max'=>255),
+			array('author', 'length', 'max'=>128),
+			array('publisher', 'length', 'max'=>128),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('book_id, book_name, isbn, provider', 'safe', 'on'=>'search'),
@@ -59,7 +64,10 @@ class Books extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'providerdetail' => array(self::BELONGS_TO, 'Users', 'provider'),
+			'coverprovider' => array(self::BELONGS_TO, 'Users', 'cover_provider'),
 			'courseBooks' => array(self::HAS_MANY, 'CourseBook', 'book_id'),
+		    'bookowner' => array(self::HAS_MANY, 'OwnerBook', 'book_id'),
+			'bookComment' => array(self::HAS_MANY, 'Bookcomment', 'book_id'),
 		);
 	}
 

@@ -50,11 +50,33 @@ class SearchController extends Controller
 		$searchCourse = trim($_REQUEST ["course"]);
 		if (isset ( $searchCourse ))
 		{
+    		//分Course查询开设本门课程的院系和上课教师
 			$sql = "select * from course where course_name like '%$searchCourse%'";
-			$courses = Course::model ()->findAllBySql ( $sql );
+			$rows = Course::model()
+			->with('actualclasses.major')
+			->with('actualclasses.teachers')
+			->findAll('course_name like :q', array(':q'=>"%$searchCourse%"));
+			
+			//整理数据
+			$courseList = array();
+			foreach ($rows as $row){
+			    $course = array();
+			    $course['course_id'] = $row->course_id;
+			    $course['course_name'] = $row->course_name;
+			    
+			    foreach ($row->actualclasses as $actualclass) {
+			        $course['major'][] = $actualclass->major;
+			        
+			        foreach($actualclass->teachers as $t){
+    			        $course['teachers'][$actualclass->major->major_id][] = $t;
+			        }
+			    }
+			    
+			    $courseList[] = $course;
+			}
 		}
 		
-		$this->render('scourse', array('q'=>$searchCourse, 'courseList' => $courses));
+		$this->render('scourse', array('q'=>$searchCourse, 'courseList' => $courseList));
 	}
 	
 	/**

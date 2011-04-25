@@ -1,12 +1,8 @@
 <?php
 $this->breadcrumbs=array(
-	'Default',
+	'首页',
 );
 ?>
-
-<h1><?php echo $this->id . '/' . $this->action->id; ?></h1>
-<h1 style="color:red">此页面是用户登录以后的首页，可以选择作为搜  索首页，
-<br/>或者用户个人课程首页（貌似有些山寨tongxiang）</h1>
 <script type="text/javascript">
 $(function() {
 	$( "#tabs" ).tabs();
@@ -87,40 +83,86 @@ $(function() {
 	
 });
 </script>
-<div class="search-box">
-<div id="tabs">
-	<ul>
-		<li><a href="#tabs-teacher">老师</a></li>
-		<li><a href="#tabs-course">课程</a></li>
-		<li><a href="#tabs-classroom">教室</a></li>
-		<li><a href="#tabs-book">课本</a></li>
-	</ul>
-	<div id="tabs-teacher">
-		<form id="ts_form" class="search_form" name="search_form" action="<?php echo Yii::app()->request->baseUrl . '/index.php'; ?>">
-			<input type="hidden" name="r" value="cs/search/scoursebteacher">
-    		<input class="search-input" name="teacher" id="teacher" type="text" size="20">
-    		<input id="ts_button" class="search-botton" type="submit" value="搜  索">
-		</form>
+<div id="content-left">
+    <div class="search-box">
+        <div id="tabs">
+        	<ul>
+        		<li><a href="#tabs-teacher">老师</a></li>
+        		<li><a href="#tabs-course">课程</a></li>
+        		<li><a href="#tabs-classroom">教室</a></li>
+        		<li><a href="#tabs-book">课本</a></li>
+        	</ul>
+        	<div id="tabs-teacher">
+        		<form id="ts_form" class="search_form" name="search_form" action="<?php echo Yii::app()->request->baseUrl . '/index.php'; ?>">
+        			<input type="hidden" name="r" value="cs/search/scoursebteacher">
+            		<input class="search-input" name="teacher" id="teacher" type="text" size="20">
+            		<input id="ts_button" class="search-botton" type="submit" value="搜  索">
+        		</form>
+        	</div>
+        	<div id="tabs-course">
+        		<form action="index.php" method="get">
+        			<input type="hidden" name="r" value="cs/search/scourse">
+            		<input class="search-input" name="course" id="course" type="text" size="20">
+            		<input id="cs_button" class="search-botton" type="submit" value="搜  索">
+        		</form>
+        	</div>
+        	<div id="tabs-classroom">
+        		<form action="index.php" method="get">
+            		<input class="search-input" name="classroom" id="classroom" type="text" size="20">
+            		<input id="cs_button" class="search-botton" type="submit" value="搜  索">
+            	</form>
+        	</div>
+        	<div id="tabs-book">
+        		<form action="index.php" method="get">
+        			<input type="hidden" name="r" value="cs/search/sbook">
+            		<input class="search-input" name="book" id="book" type="text" size="20">
+            		<input id="bs_button" class="search-botton" type="submit" value="搜  索">
+            	</form>
+        	</div>
+        </div>
+    </div>
+    <div id="hot-book">
+    	<div class="header"><h1>热门书籍</h1></div>
+    	<?php if($hotbookList) foreach ($hotbookList as $item){?>
+    	<div class="book-item">
+    		<img class="book_cover" alt="<?php echo $item['book']['book_name'];?>" src="<?php echo  Yii::app()->request->baseUrl . '/images/' . $item['book']['cover_path'];?>" >
+    		<div class="name"><?php echo $item['book']['book_name']. '(<span style="color:#FF3D2E;">'.$item['course']['course_name'].'</span>)';?></div>
+    	</div>
+    	<?php }?>
+    	<div class="clear_float"></div>
+    </div>
+    
+    <div id="hot-course">
+    	
+    </div>
+    
+    <div id="hot-relation">
+    	
+    </div>
+</div>
+<div id="content-right">
+	<div class="side-box">
+		<div class="title">你将要进行的活动</div>
+		dsafds<br>
+		dsafds<br>
+		dsafds<br>
+		dsafds<br>
+		dsafds<br>
+	</div>	
+	<div class="side-box">
+		<div class="title">你关注课程的动态</div>
+		dsafds<br>
+		dsafds<br>
+		dsafds<br>
+		dsafds<br>
+		dsafds<br>
 	</div>
-	<div id="tabs-course">
-		<form action="index.php" method="get">
-			<input type="hidden" name="r" value="cs/search/scourse">
-    		<input class="search-input" name="course" id="course" type="text" size="20">
-    		<input id="cs_button" class="search-botton" type="submit" value="搜  索">
-		</form>
-	</div>
-	<div id="tabs-classroom">
-		<form action="index.php" method="get">
-    		<input class="search-input" name="classroom" id="classroom" type="text" size="20">
-    		<input id="cs_button" class="search-botton" type="submit" value="搜  索">
-    	</form>
-	</div>
-	<div id="tabs-book">
-		<form action="index.php" method="get">
-			<input type="hidden" name="r" value="cs/search/sbook">
-    		<input class="search-input" name="book" id="book" type="text" size="20">
-    		<input id="bs_button" class="search-botton" type="submit" value="搜  索">
-    	</form>
+	<div class="side-box">
+		<div class="title">你说在院系动态</div>
+		dsafds<br>
+		dsafds<br>
+		dsafds<br>
+		dsafds<br>
+		dsafds<br>
 	</div>
 </div>
-</div><!-- End demo -->

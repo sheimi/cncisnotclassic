@@ -14,7 +14,7 @@ class DefaultController extends Controller
 	    return array(
 	        array(
 	            'allow',
-	            'actions' => array('login', 'logout'),
+	            'actions' => array('login', 'logout', 'register', 'getmajor'),
 	            'users' => array('*'),
 	        ),
 	        array(
@@ -57,12 +57,22 @@ class DefaultController extends Controller
 			if ($model->save ())
 				$this->redirect ( array ('profile', 'id' => $model->user_id ) );
 		}
-		$this->render ( 'register', array ('model' => $model ) );
+		//获取专业列表
+		$rows = Departments::model()->findAllBySql('select dep_id, dep_name from departments');
+		
+		$depList = array();
+		foreach($rows as $row){
+		    $dep = array();
+		    $dep['dep_id'] = $row->dep_id;
+		    $dep['dep_name'] = $row->dep_name;
+		    $depList[] = $dep;
+		}
+		$this->render ( 'register', array ('model' => $model, 'depList'=>$depList) );
 	}
 	
-	public function actionProfile($id)
+	public function actionProfile()
 	{
-		$this->render ( 'profile', array ('model' => $this->loadUsersModel ( $id ) ) );
+		$this->render ( 'profile');
 	}
 	
 	public function actionEdit($id)
@@ -77,6 +87,10 @@ class DefaultController extends Controller
 				$this->redirect ( array ('profile', 'id' => $model->user_id ) );
 		}
 		$this->render ( 'edit', array ('model' => $model ) );
+	}
+	
+	public function actionGetmajor(){
+	    
 	}
 	
 	private function loadUsersModel($id)

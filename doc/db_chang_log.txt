@@ -1,0 +1,5 @@
+增加owner_book表，用于记录有某本书的人
+在books中增加cover 保存书籍封面路径
+			cover_provider： 封面上传人
+
+在user表中加入   avatar_path
