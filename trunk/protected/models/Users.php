@@ -43,8 +43,9 @@ class Users extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('major_id, grade, njuid, real_name', 'required'),
-			array('bbs_name, email, real_name', 'length', 'max'=>32),
+			array('major_id, grade, njuid, real_name, username, password', 'required'),
+			array('bbs_name, email, real_name, username', 'length', 'max'=>32),
+			array('password', 'length', 'max'=>40),
 			array('major_id, grade', 'length', 'max'=>10),
 			array('njuid', 'length', 'max'=>15),
 			// The following rule is used by search().
@@ -62,7 +63,10 @@ class Users extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'books' => array(self::HAS_MANY, 'Books', 'provider'),
+			'bookscover' => array(self::HAS_MANY, 'Books', 'cover_provider'),
 			'major' => array(self::BELONGS_TO, 'Major', 'major_id'),
+		    'ownerbook' => array(self::HAS_MANY, 'OwnerBook', 'owner_id'),
+		    'commentbook' => array(self::HAS_MANY, 'Bookcomment', 'user_id'),
 		);
 	}
 
@@ -72,13 +76,14 @@ class Users extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'user_id' => 'User',
-			'bbs_name' => 'Bbs Name',
-			'major_id' => 'Major',
+			'user_id' => '本站ID',
+			'bbs_name' => '百合ID',
+			'major_id' => '专业',
 			'email' => 'Email',
-			'grade' => 'Grade',
-			'njuid' => 'Njuid',
-			'real_name' => 'Real Name',
+			'grade' => '年级',
+			'njuid' => '学号',
+			'real_name' => '真实姓名',
+		    'username' => '本站用户名'
 		);
 	}
 

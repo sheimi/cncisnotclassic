@@ -64,15 +64,11 @@ class CourseController extends Controller
 	    
 	    //下面获取推荐的书籍
         $rows = Books::model()
-	    ->with(array(
-	            'providerdetail'=>array(
-	                'select'=>'bbs_name'
-	            )
-	        )
-	    )
+	    ->with('providerdetail')
+	    ->with('coverprovider')
 	    ->with(array(
 	            'courseBooks'=>array(
-	                'condition'=>"course_id = $courseId",
+	                'condition'=>"course_id = '$courseId'",
 	                array('course_id'=>$courseId)
 	            )
 	        )
@@ -87,16 +83,18 @@ class CourseController extends Controller
 	        $book['book_id'] = $row->book_id;
 	        $book['book_name'] = $row->book_name;
 	        $book['isbn'] = $row->isbn;
-	        $book['provider_name'] = $row->providerdetail->bbs_name;
+	        $book['comment'] = $row->comment;
+	        $book['provider_name'] = $row->providerdetail->username;
+	        $book['cover_provider'] = $row->coverprovider->username;
 	        $booksList[] = $book;
 	    }
-	    var_dump($booksList);
 	    
 		$this->render('view', array(
-		'actualClassList' => $actualClassList,
-		'booksList'=>$booksList,
-		'courseId'=>$courseId
-		)
+    		'actualClassList' => $actualClassList,
+    		'booksList'=>$booksList,
+    		'courseId'=>$courseId,
+		    'courseName'=>$courseDetail['course_name']
+    		)
 		);
 	}
 

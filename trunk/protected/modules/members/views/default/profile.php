@@ -13,17 +13,4 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Users #<?php echo $model->user_id; ?></h1>
-
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'user_id',
-		'bbs_name',
-		'major_id',
-		'email',
-		'grade',
-		'njuid',
-		'real_name',
-	),
-)); ?>
+<h1>用户个人资料中心</h1>

@@ -23,6 +23,9 @@
 	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/jquery-1.5.1.js');?>
 	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/ui/jquery-ui-1.8.11.custom.js');?>
 	
+	<!-- 表格编辑 -->
+	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/jquery.jeditable.mini.js');?>
+	
 	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/autocomplete/lib/jquery.bgiframe.min.js');?>
 	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/autocomplete/lib/jquery.ajaxQueue.js');?>
 	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/autocomplete/lib/thickbox-compressed.js');?>
@@ -41,7 +44,6 @@
 <body>
 
 <div class="container" id="page">
-
 	<div id="header">
 		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
 	</div><!-- header -->
@@ -49,10 +51,11 @@
 	<div id="mainmenu">
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
-				array('label'=>'Home', 'url'=>array('/default/default')),
-				array('label'=>'About', 'url'=>array('/default/site/about')),
-				array('label'=>'Contact', 'url'=>array('/default/site/contactus')),
-				array('label'=>'Feedback', 'url'=>array('/default/site/feedback')),
+				array('label'=>'首页', 'url'=>array('/default/default')),
+				array('label'=>'个人中心', 'url'=>array('/default/default')),
+				array('label'=>'关于我们', 'url'=>array('/default/site/about')),
+				//array('label'=>'联系我们', 'url'=>array('/default/site/contactus')),
+				array('label'=>'项目反馈', 'url'=>array('/default/site/feedback')),
 				array('label'=>'Login', 'url'=>array('/members/default/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/members/default/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),
@@ -65,6 +68,7 @@
 
 	<?php echo $content; ?>
 
+	<div class="clear_float"></div>
 	<div id="footer">
 		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
 		All Rights Reserved.<br/>

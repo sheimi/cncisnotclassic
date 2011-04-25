@@ -6,6 +6,9 @@ body
 	font: normal 10pt Arial,Helvetica,sans-serif;
 	background: #EFEFEF;
 }
+a{
+	cursor:pointer;
+}
 
 #page
 {
@@ -19,12 +22,12 @@ body
 {
 	margin: 0;
 	padding: 0;
-	border-top: 3px solid #C9E0ED;
+	border-top: 3px solid #FF3D2E;
 }
 
 #content
 {
-    padding: 20px;
+    padding: 10px;
 }
 
 #sidebar
@@ -43,13 +46,14 @@ body
 
 #logo
 {
-	padding: 10px 20px;
+	padding: 30px 20px;
 	font-size: 200%;
 }
 
 #mainmenu
 {
-	background:white url(bg.gif) repeat-x left top;
+	background:#FF3D2E repeat-x left top;
+	padding:5px 0;
 }
 
 #mainmenu ul
@@ -75,8 +79,9 @@ body
 
 #mainmenu ul li a:hover, #mainmenu ul li.active a
 {
-	color: #6399cd;
-	background-color:#EFF4FA;
+	color: #fff;
+	background-color:#272F32;
+	height:100px;
 	text-decoration:none;
 }
 
@@ -137,8 +142,10 @@ div.view
 
 div.breadcrumbs
 {
-	font-size: 0.9em;
-	padding: 5px 20px;
+	font-size: 1.2em;
+	padding: 10px 10px 0 10px;
+	color:272F32;
+	border-radius: 0 20px 20px 0 ;
 }
 
 div.breadcrumbs span
@@ -226,4 +233,31 @@ div.search-form
 .operations li a:hover
 {
 	background: #80CFFF;
+}
+
+
+/**
+ * Custom style
+ */
+
+#content-left{
+	float:left;
+}
+#content-right{
+	width:300px;
+	float:right;
+}
+
+#content-right .side-box {
+	border:none;
+	border-bottom:2px dashed #EEE;
+	margin-bottom:10px;
+}
+
+.side-box .title{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight:none;
+	color:#FF3D2E;
+	margin-bottom:5px;
 }
