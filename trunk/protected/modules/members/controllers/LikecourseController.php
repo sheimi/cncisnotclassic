@@ -10,21 +10,47 @@ class LikecourseController extends Controller
 	public function actionAdd()
 	{
 	    //添加一个 喜欢课程关系
+	    $courseId = $_REQUEST['cid'];
 	    $memberId = Yii::app()->user->getState('user_id');
-	    $courseId = $_GET['cid'];
+	    $star = $_REQUEST['star'];
+	    
+	    //检查是否已经标记过
+	    $row = LikeCourse::model()
+	    ->find('course_id = :cid AND member_id = :mid', array(':cid'=>$courseId, ':mid'=>$memberId));
+	    
 	    $likeCourseModel = new LikeCourse();
-	    
-	    $likeCourseModel->attributes = array(
-	        'member_id' => $memberId,
-	        'course_id' => $courseId
-	    );
-	    
-	    if($likeCourseModel->save()){
-	        //插入成功
+	    if(sizeof($row) == 0){
+	        //没有记录
+    	    
+    	    $likeCourseModel->attributes = array(
+    	        'member_id' => $memberId,
+    	        'course_id' => $courseId,
+    	        'star' => $star,
+    	    );
+    	    
+    	    if($likeCourseModel->save()){
+    	        //插入成功
+    	        echo 'success';
+    	    }else{
+    	        //插入失败
+    	        echo 'fail';
+    	    }
 	    }else{
-	        //插入失败
+	        //已经标记过喜欢
+	        $rows = $likeCourseModel->findAllByAttributes(array(
+    	        'member_id' => $memberId,
+    	        'course_id' => $courseId,
+    	    ));
+    	    
+    	    foreach ($rows as $row) {
+    	        $row->attributes = array(
+    	                'star' => $star
+                );
+                $row->save();
+    	    }
+    	    echo "已经标记为喜欢  $star 星";
+    	        
 	    }
-		$this->render('add');
 	}
 
 	

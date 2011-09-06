@@ -8,10 +8,19 @@
  * @property string $book_name
  * @property string $isbn
  * @property string $provider
+ * @property string $cover_path
+ * @property string $add_time
+ * @property string $author
+ * @property string $publisher
+ * @property string $comment
+ * @property string $pubdate
+ * @property string $price
  *
  * The followings are the available model relations:
- * @property Users $provider0
+ * @property Bookcomment[] $bookcomments
+ * @property BvHistory[] $bvHistories
  * @property CourseBook[] $courseBooks
+ * @property OwnerBook[] $ownerBooks
  */
 class Books extends CActiveRecord
 {
@@ -41,17 +50,15 @@ class Books extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('provider', 'required'),
-			array('book_name', 'length', 'max'=>128),
-			array('isbn', 'length', 'max'=>32),
+			array('book_name, cover_path, author, publisher', 'length', 'max'=>128),
+			array('isbn', 'length', 'max'=>16),
 			array('provider', 'length', 'max'=>10),
-			array('cover_path', 'length', 'max'=>128),
-			array('cover_provider', 'length', 'max'=>10),
 			array('comment', 'length', 'max'=>255),
-			array('author', 'length', 'max'=>128),
-			array('publisher', 'length', 'max'=>128),
+			array('price', 'length', 'max'=>8),
+			array('add_time, pubdate', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('book_id, book_name, isbn, provider', 'safe', 'on'=>'search'),
+			array('book_id, book_name, isbn, provider, cover_path, add_time, author, publisher, comment, pubdate, price', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,9 +70,12 @@ class Books extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'providerdetail' => array(self::BELONGS_TO, 'Users', 'provider'),
-			'coverprovider' => array(self::BELONGS_TO, 'Users', 'cover_provider'),
+			'bookcomments' => array(self::HAS_MANY, 'Bookcomment', 'book_id'),
+			'bvHistories' => array(self::HAS_MANY, 'BvHistory', 'book_id'),
 			'courseBooks' => array(self::HAS_MANY, 'CourseBook', 'book_id'),
+			'ownerBooks' => array(self::HAS_MANY, 'OwnerBook', 'book_id'),
+		
+			'providerdetail' => array(self::BELONGS_TO, 'Users', 'provider'),
 		    'bookowner' => array(self::HAS_MANY, 'OwnerBook', 'book_id'),
 			'bookComment' => array(self::HAS_MANY, 'Bookcomment', 'book_id'),
 		);
@@ -81,6 +91,13 @@ class Books extends CActiveRecord
 			'book_name' => 'Book Name',
 			'isbn' => 'Isbn',
 			'provider' => 'Provider',
+			'cover_path' => 'Cover Path',
+			'add_time' => 'Add Time',
+			'author' => 'Author',
+			'publisher' => 'Publisher',
+			'comment' => 'Comment',
+			'pubdate' => 'Pubdate',
+			'price' => 'Price',
 		);
 	}
 
@@ -99,6 +116,13 @@ class Books extends CActiveRecord
 		$criteria->compare('book_name',$this->book_name,true);
 		$criteria->compare('isbn',$this->isbn,true);
 		$criteria->compare('provider',$this->provider,true);
+		$criteria->compare('cover_path',$this->cover_path,true);
+		$criteria->compare('add_time',$this->add_time,true);
+		$criteria->compare('author',$this->author,true);
+		$criteria->compare('publisher',$this->publisher,true);
+		$criteria->compare('comment',$this->comment,true);
+		$criteria->compare('pubdate',$this->pubdate,true);
+		$criteria->compare('price',$this->price,true);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

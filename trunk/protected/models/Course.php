@@ -5,12 +5,13 @@
  *
  * The followings are the available columns in table 'course':
  * @property string $course_id
- * @property string $couse_name
+ * @property string $course_name
  *
  * The followings are the available model relations:
  * @property Actualclass[] $actualclasses
  * @property CourseBook[] $courseBooks
  * @property CourseMaterial[] $courseMaterials
+ * @property LikeCourse[] $likeCourses
  */
 class Course extends CActiveRecord
 {
@@ -39,12 +40,12 @@ class Course extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('course_id, couse_name', 'required'),
+			array('course_id, course_name', 'required'),
 			array('course_id', 'length', 'max'=>10),
-			array('couse_name', 'length', 'max'=>255),
+			array('course_name', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('course_id, couse_name', 'safe', 'on'=>'search'),
+			array('course_id, course_name', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,6 +60,7 @@ class Course extends CActiveRecord
 			'actualclasses' => array(self::HAS_MANY, 'Actualclass', 'course_id'),
 			'courseBooks' => array(self::HAS_MANY, 'CourseBook', 'course_id'),
 			'courseMaterials' => array(self::HAS_MANY, 'CourseMaterial', 'course_id'),
+			'likeCourses' => array(self::HAS_MANY, 'LikeCourse', 'course_id'),
 		);
 	}
 
@@ -69,7 +71,7 @@ class Course extends CActiveRecord
 	{
 		return array(
 			'course_id' => 'Course',
-			'couse_name' => 'Couse Name',
+			'course_name' => 'Course Name',
 		);
 	}
 
@@ -85,7 +87,7 @@ class Course extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('course_id',$this->course_id,true);
-		$criteria->compare('couse_name',$this->couse_name,true);
+		$criteria->compare('course_name',$this->course_name,true);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

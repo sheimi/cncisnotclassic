@@ -1,12 +1,8 @@
-<?php
-$this->breadcrumbs=array(
-	'书籍'=>array('/cs/books'),
-	'推荐书籍',
-);?>
-
 <div id="content-left" class="addbook">
+<?php echo $this->renderPartial('_addbook_form', array('model'=>$model)); ?>
+<!-- 
 	<div id="book-info">
-    	<h1>为课程  <?php echo $course['course_name'];?> 推荐书籍</h1>
+    	<h1>为课程  <span class="keyword"><?php echo $course['course_name'];?></span> 推荐书籍</h1>
     	
     	<form method="post">
     	
@@ -20,7 +16,7 @@ $this->breadcrumbs=array(
 			<div id="book-detail">
 				<div class="input-item">
             		<label for="book_name">书名：</label>
-            		<input type="text" name="book[name]" ><a style="float:right;">检查重复</a>
+            		<input type="text" name="book[name]" >
         		</div>
         		
         		<div class="input-item">
@@ -35,17 +31,16 @@ $this->breadcrumbs=array(
         		
         		<div class="input-item">
             		<label for="publish_time">出版时间：</label>
-            		<input type="text" name="book[publish_time]" >
+            		<input id="datepicker" type="text" name="book[publish_time]" >
     			</div>
         		
         		<input name="access" type="radio" value="borrow" checked="true">我有可借&nbsp;&nbsp;
         		<input name="access" type="radio" value="sell">我有可卖&nbsp;&nbsp;
         		<input name="access" type="radio" value="private">我在用&nbsp;&nbsp;
         		<input name="access" type="radio" value="havent">我没有&nbsp;&nbsp;
-    		
     		</div>
     		<div class="clear_float"></div>
-    		<div id="firestcomment">
+    		<div id="first-comment">
         		<label for="comment">推荐理由：</label>
         		<div class="clear_float"></div>
         		<div id="content">
@@ -71,4 +66,5 @@ $this->breadcrumbs=array(
     		</div>
 		</div>
 	</div>
+ -->
 </div>

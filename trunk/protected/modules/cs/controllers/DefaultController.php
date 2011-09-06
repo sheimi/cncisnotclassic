@@ -12,7 +12,7 @@ class DefaultController extends Controller
 	    $rows = CbUpDown::model()
 	    ->with('cb.course')
 	    ->with('cb.book')
-	    ->findAll();
+	    ->findAll(array('limit'=>12, 'order'=>'book.book_id desc'));
 	    
 	    //整理数据
 	    $cbList = array();

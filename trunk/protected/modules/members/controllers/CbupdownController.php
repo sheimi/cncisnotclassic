@@ -14,44 +14,62 @@ class CbupdownController extends Controller
 	
 	function actionUp(){
 	    $memberId = Yii::app()->user->getState('user_id');
+        $cbId = $_REQUEST['cbid'];
+	    echo $this->upCourseBook($memberId, $cbId, 'up');
+	}
+	
+	public function actionDown(){
+	    $memberId = Yii::app()->user->getState('user_id');
+        $cbId = $_REQUEST['cbid'];
+	    echo $this->downCourseBook($memberId, $cbId,'down');
+	}
+	
+	private function upCourseBook($memberId, $cbId, $updown){
+	    $memberId = Yii::app()->user->getState('user_id');
         $updownModel = new CbUpDown();
-        
-        //书籍课程关系的Id
-        $cbId = $_POST['cbid'];
-        $updown = $_POST['updown'];
-        
-        $rows = $updownModel
-        ->find(
-        	'member_id = :member_id AND cb_id = :cb_id',
-            array(
-                ':member_id'=>$memberId,
-                ':cb_id'=>$cbId
-            )
-        );
-        
+	
         if($updown != 'up' && $updown){
             $updow = 'up';
         }
         
-        if(sizeof($rows) != 0){
+        $rows = $updownModel
+        ->findByAttributes(
+            array(
+                'member_id'=>$memberId,
+                'cb_id'=>$cbId
+            )
+        );
+        
+        
+        if($rows){
             //已经评价过，不能重复评价
+            if($rows->updown != $updown){
+                $rows->attributes = array(
+                    'updown' => $updown
+                );
+                $rows->save();
+            }
+            echo $updown;
         }else{
             $data = array(
                 'member_id'=>$memberId,
                 'cb_id'=>$cbId,
-                'updow'=>$updow
+                'updown'=>$updow
             );
-            $updownModel->attributes = $data();
+            $updownModel->attributes = $data;
+            
             if($updownModel->save()){
                 //添加数据成功
+                return 'success';
             }else{
                 //添加数据失败
+                return 'fail';
             }
         }
 	}
 	
-	public function actionDown(){
-	    
+	private function downCourseBook($memberId, $cbId, $updown){
+	    return $this->upCourseBook($memberId, $cbId, 'down');
 	}
 
 	// Uncomment the following methods and override them if needed

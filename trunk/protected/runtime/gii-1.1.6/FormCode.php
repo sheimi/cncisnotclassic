@@ -1,5 +1,5 @@
 <?php
 return array (
   'template' => 'default',
-  'viewPath' => 'members.views.users',
+  'viewPath' => 'cs.views.books',
 );
