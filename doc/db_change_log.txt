@@ -3,3 +3,5 @@
 			cover_provider： 封面上传人
 
 在user表中加入   avatar_path
+
+在like_course表中增加star

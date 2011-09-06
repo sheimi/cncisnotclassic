@@ -12,8 +12,8 @@
  * @property string $star
  *
  * The followings are the available model relations:
- * @property Users $user
  * @property Books $book
+ * @property Users $user
  */
 class Bookcomment extends CActiveRecord
 {
@@ -44,7 +44,6 @@ class Bookcomment extends CActiveRecord
 		return array(
 			array('book_id, user_id, content', 'required'),
 			array('book_id, user_id', 'length', 'max'=>10),
-			array('content', 'length', 'max'=>255),
 			array('star', 'length', 'max'=>5),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
@@ -60,8 +59,8 @@ class Bookcomment extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'user' => array(self::BELONGS_TO, 'Users', 'user_id'),
 			'book' => array(self::BELONGS_TO, 'Books', 'book_id'),
+			'user' => array(self::BELONGS_TO, 'Users', 'user_id'),
 		);
 	}
 

@@ -8,10 +8,11 @@
  * @property string $member_id
  * @property string $course_id
  * @property string $add_time
+ * @property string $star
  *
  * The followings are the available model relations:
- * @property Course $course
  * @property Users $member
+ * @property Course $course
  */
 class LikeCourse extends CActiveRecord
 {
@@ -40,11 +41,12 @@ class LikeCourse extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('member_id, course_id, add_time', 'required'),
-			array('member_id, course_id', 'length', 'max'=>10),
+			array('member_id, course_id, star', 'required'),
+			array('member_id, course_id, star', 'length', 'max'=>10),
+			array('add_time', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('like_course_id, member_id, course_id, add_time', 'safe', 'on'=>'search'),
+			array('like_course_id, member_id, course_id, star', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -56,8 +58,8 @@ class LikeCourse extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'course' => array(self::BELONGS_TO, 'Course', 'course_id'),
 			'member' => array(self::BELONGS_TO, 'Users', 'member_id'),
+			'course' => array(self::BELONGS_TO, 'Course', 'course_id'),
 		);
 	}
 
@@ -71,6 +73,7 @@ class LikeCourse extends CActiveRecord
 			'member_id' => 'Member',
 			'course_id' => 'Course',
 			'add_time' => 'Add Time',
+			'star' => 'Star',
 		);
 	}
 
@@ -89,6 +92,7 @@ class LikeCourse extends CActiveRecord
 		$criteria->compare('member_id',$this->member_id,true);
 		$criteria->compare('course_id',$this->course_id,true);
 		$criteria->compare('add_time',$this->add_time,true);
+		$criteria->compare('star',$this->star,true);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

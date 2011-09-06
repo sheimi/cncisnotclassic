@@ -14,16 +14,24 @@ class MyClassController extends Controller
 
 	public function actionEdit()
 	{
-	    $myClassId = $_POST['id'];
-	    $customContent = $_POST['value'];
+	    $myClassId = $_REQUEST['id'];
+	    $event_title = $_REQUEST['event_title'];
+	    $event_place = $_REQUEST['event_place'];
 	    
-	    $myClassModel = new Myclass();
 	    $data = array(
-	        'custom' => $customContent
+	        'class_name' => $event_title,
+	        'classroom' => $event_place
 	    );
-	   if($myClassModel->updateByPk($myClassId, $data)) {
-	       echo $customContent;
+	    
+	   if(Myclass::model()->updateByPk($myClassId, $data)) {
+	       echo json_encode(array(
+	           'status' => 'success',
+	           'event_title' => $event_title,
+	           'event_place' => $event_place
+	       ));
+	       
 	   }else{
+	       echo 'error';
 	   }
 	}
 
@@ -79,62 +87,6 @@ class MyClassController extends Controller
 	    ));
 	}
 	
-	/**
-	 * @author Javoft
-	 * 根据用户的院系信息，初始化用户的课表
-	 */
-	public function actionInitclass(){
-	    $memberId = Yii::app()->user->getState('user_id');
-	    //查询出用户所属的院系
-	    $user = Users::model()->findByPk($memberId);
-	    $majorId = $user->major_id;
-	    $grade = $user->grade;
-	    //获取该院系的课程
-	    $rows = Actualclass::model()
-	    ->with('course')
-	    ->findAll(array(
-    	    'select'=>'class_id',
-    	    'condition' =>"major_id = '$majorId' AND grade = $grade",
-	        )
-	    );
-	    
-	    //整理数据
-	    $myClassList = array();
-	    foreach ($rows as $row){
-	        $myClass = array();
-	        $myClass['actualclass_id'] = $row->class_id;
-	        $myClass['class_name'] = $row->course->course_name;
-	        $myClass['member_id'] = Yii::app()->user->getState('user_id');
-	        foreach ($row->timeSites as $timeSite){
-	            $myClass['day'] = $timeSite->day_of_week;
-	            $myClass['classroom'] = $timeSite->classroom;
-	            $myClass['campus'] = $timeSite->campus;
-	            
-	            if(trim($timeSite->week_info) == '单周'){
-	                $myClass['week_info'] = 'single';
-	            }else if(trim($timeSite->week_info) == '双周'){
-	                $myClass['week_info'] = 'double';
-	            }else{
-	                $myClass['week_info'] = 'both';
-	            }
-	            
-	            for($i = $timeSite->begin_time; $i <= $timeSite->end_time; $i++){
-	                $myClass['time'] = $i;
-	                $myClassList[] = $myClass;
-	            }
-	        }
-	    }
-	    
-	    //上面的数据插入到myClass表中
-	    
-	    foreach ($myClassList as $myClass){
-	        $myClassModel = new Myclass();
-	        $myClassModel->attributes = $myClass;
-	        $myClassModel->save($myClass);
-	    }
-	    
-	}
-
 	// Uncomment the following methods and override them if needed
 	/*
 	public function filters()

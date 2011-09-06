@@ -67,7 +67,7 @@ class DefaultController extends Controller
 		    $dep['dep_name'] = $row->dep_name;
 		    $depList[] = $dep;
 		}
-		$this->render ( 'register', array ('model' => $model, 'depList'=>$depList) );
+		$this->render( 'register', array ('model' => $model, 'depList'=>$depList) );
 	}
 	
 	public function actionProfile()
@@ -89,8 +89,19 @@ class DefaultController extends Controller
 		$this->render ( 'edit', array ('model' => $model ) );
 	}
 	
-	public function actionGetmajor(){
+	public function actionGetmajor($dep_id){
+	    $rows = Major::model()
+	    ->findAll('dep_id = :dep_id', array(':dep_id'=>$dep_id));
 	    
+	    $majors = array();
+	    foreach ($rows as $row)
+	    {
+	        $major = array();
+	        $major['name'] = $row->major_name;
+	        $major['id'] = $row->major_id;
+	        $majors[] = $major;
+	    }
+	    echo json_encode ($majors);
 	}
 	
 	private function loadUsersModel($id)

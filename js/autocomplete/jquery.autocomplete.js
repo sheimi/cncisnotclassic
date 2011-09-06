@@ -709,7 +709,7 @@ $.Autocompleter.Select = function (options, input, select, config) {
 			}
 		},
 		hide: function() {
-			element && element.hide();
+			element && element.fadeOut().slideUp('slow');
 			listItems && listItems.removeClass(CLASSES.ACTIVE);
 			active = -1;
 		},
@@ -725,7 +725,7 @@ $.Autocompleter.Select = function (options, input, select, config) {
 				width: typeof options.width == "string" || options.width > 0 ? options.width : $(input).width(),
 				top: offset.top + input.offsetHeight,
 				left: offset.left
-			}).show();
+			}).fadeIn().slideDown('slow'); //show改为fadeIn
             if(options.scroll) {
                 list.scrollTop(0);
                 list.css({

@@ -19,19 +19,29 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/autocomplete.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/js/autocomplete/jquery.autocomplete.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/js/autocomplete/lib/thickbox.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/js/fancybox/jquery.fancybox-1.3.4.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/js/jrating_v2.1/jquery/jRating.jquery.css" />
 	
 	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/jquery-1.5.1.js');?>
 	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/ui/jquery-ui-1.8.11.custom.js');?>
 	
-	<!-- 表格编辑 -->
-	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/jquery.jeditable.mini.js');?>
+	<!-- 弹出窗口 -->
+	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/fancybox/jquery.fancybox-1.3.4.js');?>
+	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/fancybox/jquery.easing-1.3.pack.js');?>
 	
 	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/autocomplete/lib/jquery.bgiframe.min.js');?>
 	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/autocomplete/lib/jquery.ajaxQueue.js');?>
 	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/autocomplete/lib/thickbox-compressed.js');?>
 	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/autocomplete/jquery.autocomplete.js');?>
 	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/localdata.js');?>
-	
+	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/jquery.cookie.js');?>
+	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/jrating_v2.1/jquery/jRating.jquery.js');?>
+
+	<script type="text/javascript">
+    <!--
+   		var BASE_URL = "<?php echo Yii::app()->request->baseUrl;?>";
+    //-->
+    </script>
 	<style type="text/css">
 		.clear_float{
 			width:100%;
@@ -52,7 +62,7 @@
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				array('label'=>'首页', 'url'=>array('/default/default')),
-				array('label'=>'个人中心', 'url'=>array('/default/default')),
+				array('label'=>'个人中心', 'url'=>array('/members/profile')),
 				array('label'=>'关于我们', 'url'=>array('/default/site/about')),
 				//array('label'=>'联系我们', 'url'=>array('/default/site/contactus')),
 				array('label'=>'项目反馈', 'url'=>array('/default/site/feedback')),
@@ -70,9 +80,9 @@
 
 	<div class="clear_float"></div>
 	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
+		Copyright &copy; <?php echo date('Y'); ?> by <a>LilyStudio</a>.<br/>
 		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
+		<?php echo 'LilyStudio'; ?>
 	</div><!-- footer -->
 
 </div><!-- page -->
