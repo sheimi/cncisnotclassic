@@ -1,7 +1,4 @@
 <?php
-$this->breadcrumbs=array(
-	'Materials',
-);
 
 $this->menu=array(
 	array('label'=>'Create Material', 'url'=>array('create')),

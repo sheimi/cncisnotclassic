@@ -1,7 +1,4 @@
 <?php
-$this->breadcrumbs=array(
-	'Departments',
-);
 
 $this->menu=array(
 	array('label'=>'Create Departments', 'url'=>array('create')),

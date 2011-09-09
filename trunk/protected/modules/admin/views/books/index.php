@@ -1,7 +1,4 @@
 <?php
-$this->breadcrumbs=array(
-	'Books',
-);
 
 $this->menu=array(
 	array('label'=>'Create Books', 'url'=>array('create')),
@@ -11,7 +8,29 @@ $this->menu=array(
 
 <h1>Books</h1>
 
-<?php $this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$dataProvider,
-	'itemView'=>'_view',
-)); ?>
+<?php
+$this->widget('zii.widgets.grid.CGridView', array(
+      'dataProvider'=>$dataProvider,
+      'selectableRows'=>0,
+      'columns'=>array(
+        array(
+          'name'=>'book_name',
+          'type'=>'raw',
+          'value'=>'CHtml::link(
+            $data->book_name, 
+            array("books/view", "id"=>$data->book_id))',
+          ),
+        array(
+          'name' => 'provider',
+          'value' => '$data->providerdetail->username',
+          ),
+        ),
+      //'itemView'=>'_view',
+      )); ?>
+<script>
+$(document).ready(function() {
+  $('.items tr').click(function() {
+    window.location = $(this).find('a').attr('href');
+  });
+});
+</script>
