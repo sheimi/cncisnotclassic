@@ -2,22 +2,35 @@
 
 class CourseController extends Controller
 {
-	public function actionView()
+    public function accessRules()
+	{
+		return array (
+		    //这只该Controller下面对应的所有Action未登录用户都不能访问
+		    array (
+		    'deny', 
+		    'actions' => array (), 
+		    'users' => array ('?')),
+	    );
+	}
+
+	// Uncomment the following methods and override them if needed
+	public function filters()
+	{
+		// return the filter configuration for this controller, e.g.:
+		return array(
+			'accessControl',
+		);
+	}
+	public function actionView($cid)
 	{
 		$memberId = Yii::app ()->user->getState ( 'user_id' );
-		$courseId = $_REQUEST ['cid'];
+		$courseId = $cid;
 		
 		//查处课程信息
 		$row = Course::model ()->findByPk ( $courseId );
 		$courseDetail ['course_id'] = $row->course_id;
 		$courseDetail ['course_name'] = $row->course_name;
 		
-		//根据课程，获得课程的课节信息（ActualClass）
-		//	    $criteria = new CDbCriteria();
-		//	    $criteria->select = array();
-		//	    $criteria->condition = '';
-		
-
 		//需要选择出 院系信息
 		$rows = ActualClass::model ()->with ( //一门课可能有多个老师
 array ('teachers' => array ('select' => 'teacher_id, teacher_name' ) ) )->with ( //一门Actualclass 只可能是一个院系的
@@ -88,7 +101,6 @@ array ('major' => array ('select' => 'major_id, major_name' ) ) )->findAll ( "co
 		$relBookNum = 10;
 		$booksList = $this->getRelBook ( $courseId, $relBookNum );
 		
-		
 		//获取当前用户对这本书的评分和其他用户对这本书的评分
 		$row = LikeCourse::model ()->findByAttributes ( array ('member_id' => $memberId, 'course_id' => $courseId ) );
 		if ($row)
@@ -99,21 +111,14 @@ array ('major' => array ('select' => 'major_id, major_name' ) ) )->findAll ( "co
 			$courseStarMy = 0;
 		}
 		
-		$avagStar = Yii::app()->db->createCommand("select AVG(star) avgstar from like_course where member_id = $memberId and course_id = '$courseId'")->query();
-		$avagStar->next();
-		$current = $avagStar->current();
 		$this->render ( 'view', array (
-		'actualClassList' => $actualClassList, 
-		'booksList' => $booksList, 
-		'courseId' => $courseId, 
-		'courseName' => $courseDetail ['course_name'], 
-		'courseStarMy' => $courseStarMy,
-        'avagStar'=>$current['avgstar']
-		
+    		'actualClassList' => $actualClassList,
+    		'booksList' => $booksList, 
+    		'courseId' => $courseId, 
+    		'courseName' => $courseDetail ['course_name'], 
+    		'courseStarMy' => $courseStarMy,
 		) 
 		);
-		
-		
 	}
 	
 	/**
@@ -145,7 +150,10 @@ array ('major' => array ('select' => 'major_id, major_name' ) ) )->findAll ( "co
 			$book ['cb_id'] = $row ['cb_id'];
 			$book ['book_id'] = $row ['book_id'];
 			$book ['book_name'] = $row ['book_name'];
-			$book ['cover_path'] = $row ['cover_path'];
+			$book ['publisher'] = $row ['publisher'];
+			$book ['pubdate'] = $row ['pubdate'];
+			
+			$book ['cover_path'] = $book ['image'] = $row ['cover_path'];
 			$book ['up_total'] = $row ['up_total'];
 			$book ['provider_name'] = $row ['username'];
 			$book ['provider_id'] = $row ['user_id'];

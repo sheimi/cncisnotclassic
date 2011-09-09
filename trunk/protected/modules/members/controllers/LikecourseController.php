@@ -3,14 +3,34 @@
 class LikecourseController extends Controller
 {
     
+    public function accessRules()
+	{
+		return array (
+		    //这只该Controller下面对应的所有Action未登录用户都不能访问
+		    array (
+		    'deny', 
+		    'actions' => array (), 
+		    'users' => array ('?')),
+	    );
+	}
+
+	// Uncomment the following methods and override them if needed
+	public function filters()
+	{
+		// return the filter configuration for this controller, e.g.:
+		return array(
+			'accessControl',
+		);
+	}
+	
     /**
      * @author Javoft
      * 在点击关注课程之后，添加记录
      */
-	public function actionAdd()
+	public function actionAdd($courseid)
 	{
 	    //添加一个 喜欢课程关系
-	    $courseId = $_REQUEST['cid'];
+	    $courseId = $courseid;
 	    $memberId = Yii::app()->user->getState('user_id');
 	    $star = $_REQUEST['star'];
 	    

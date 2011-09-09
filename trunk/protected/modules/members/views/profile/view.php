@@ -3,11 +3,6 @@
     	<div class="box-title"><?php echo Yii::app()->user->getState('username');?>j基本资料</div>
 		<div class="content-box">
     		<div>
-    			<span>百合帐号：</span>
-    			<span><?php echo $userInfo['bbs_name']; ?></span>
-    		</div>
-    		
-    		<div>
     			<span>本站帐号：</span>
     			<span><?php echo $userInfo['username']; ?></span>
     		</div>
@@ -40,7 +35,7 @@
      <!-- 他推荐的书 -->
      
     <div id="ownbook">
-    	<div class="box-title"><?php echo Yii::app()->user->getState('username');?>的书架</div>
+    	<div class="box-title"><?php echo Yii::app()->user->getState('username');?>标记为有的参考书</div>
         <div class="content-box">
         	<?php foreach ($ownBookList as $book){?>
         		<div class="book">
@@ -54,6 +49,7 @@
     <!-- 他推荐的书 -->
      
     <div class="clear_float"></div>
+    <!-- 
     <div id="likecourse">
     	<div class="box-title"><?php echo Yii::app()->user->getState('username');?>他评价过的课程</div>
     	<div class="content-box">
@@ -66,12 +62,10 @@
         </div>
     </div>
     
-    <!-- 用户的课表 -->
     <div id="myclass">
     	<div class="box-title"><?php echo Yii::app()->user->getState('username');?>的课程表</div>
     	<div class="">
     		<?php if (is_array($myclass)){?>
-    			<!-- 根据取出的课程数据，生成一张课表 -->
     			<table>
     				<tr>
     					<th style="border:1px solid #ddd;  height:36px;padding:0px;">选项</th>
@@ -104,5 +98,6 @@
     		<?php }?>
         </div>
     </div>
+     -->
     
 </div>

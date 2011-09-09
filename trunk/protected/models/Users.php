@@ -11,9 +11,19 @@
  * @property string $grade
  * @property string $njuid
  * @property string $real_name
+ * @property string $username
+ * @property string $password
+ * @property string $avatar_path
  *
  * The followings are the available model relations:
- * @property Books[] $books
+ * @property Bookcomment[] $bookcomments
+ * @property BvHistory[] $bvHistories
+ * @property CbUpDown[] $cbUpDowns
+ * @property Feedback[] $feedbacks
+ * @property KeepPrivate $keepPrivate
+ * @property LikeCourse[] $likeCourses
+ * @property Myclass[] $myclasses
+ * @property OwnerBook[] $ownerBooks
  * @property Major $major
  */
 class Users extends CActiveRecord
@@ -43,14 +53,15 @@ class Users extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('major_id, grade, njuid, real_name, username, password', 'required'),
+			array('major_id, grade, password', 'required'),
 			array('bbs_name, email, real_name, username', 'length', 'max'=>32),
-			array('password', 'length', 'max'=>40),
 			array('major_id, grade', 'length', 'max'=>10),
 			array('njuid', 'length', 'max'=>15),
+			array('password', 'length', 'max'=>40),
+			array('avatar_path', 'length', 'max'=>128),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('user_id, bbs_name, major_id, email, grade, njuid, real_name', 'safe', 'on'=>'search'),
+			array('user_id, bbs_name, major_id, email, grade, njuid, real_name, username, password, avatar_path', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -62,11 +73,15 @@ class Users extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'books' => array(self::HAS_MANY, 'Books', 'provider'),
-			'bookscover' => array(self::HAS_MANY, 'Books', 'cover_provider'),
+			'bookcomments' => array(self::HAS_MANY, 'Bookcomment', 'user_id'),
+			'bvHistories' => array(self::HAS_MANY, 'BvHistory', 'user_id'),
+			'cbUpDowns' => array(self::HAS_MANY, 'CbUpDown', 'member_id'),
+			'feedbacks' => array(self::HAS_MANY, 'Feedback', 'member_id'),
+			'keepPrivate' => array(self::HAS_ONE, 'KeepPrivate', 'user_id'),
+			'likeCourses' => array(self::HAS_MANY, 'LikeCourse', 'member_id'),
+			'myclasses' => array(self::HAS_MANY, 'Myclass', 'member_id'),
+			'ownerBooks' => array(self::HAS_MANY, 'OwnerBook', 'owner_id'),
 			'major' => array(self::BELONGS_TO, 'Major', 'major_id'),
-		    'ownerbook' => array(self::HAS_MANY, 'OwnerBook', 'owner_id'),
-		    'commentbook' => array(self::HAS_MANY, 'Bookcomment', 'user_id'),
 		);
 	}
 
@@ -76,14 +91,16 @@ class Users extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'user_id' => '本站ID',
-			'bbs_name' => '百合ID',
-			'major_id' => '专业',
+			'user_id' => 'User',
+			'bbs_name' => 'Bbs Name',
+			'major_id' => 'Major',
 			'email' => 'Email',
-			'grade' => '年级',
-			'njuid' => '学号',
-			'real_name' => '真实姓名',
-		    'username' => '本站用户名'
+			'grade' => 'Grade',
+			'njuid' => 'Njuid',
+			'real_name' => 'Real Name',
+			'username' => 'Username',
+			'password' => 'Password',
+			'avatar_path' => 'Avatar Path',
 		);
 	}
 
@@ -105,6 +122,9 @@ class Users extends CActiveRecord
 		$criteria->compare('grade',$this->grade,true);
 		$criteria->compare('njuid',$this->njuid,true);
 		$criteria->compare('real_name',$this->real_name,true);
+		$criteria->compare('username',$this->username,true);
+		$criteria->compare('password',$this->password,true);
+		$criteria->compare('avatar_path',$this->avatar_path,true);
 
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,

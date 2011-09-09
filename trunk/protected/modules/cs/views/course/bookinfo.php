@@ -6,7 +6,13 @@ $(function(){
 		$.ajax({
 			url:'index.php?r=cs/course/confirmbook&isbn='+isbn + '&courseId='+cid,
 			success:function(data){
-				alert(data);
+        		$().toastmessage('showToast', {
+        			text     : data,
+        		    sticky   : false,
+        		    position : 'top-center',
+        		    type     : 'success',
+        		    stayTime: 5000
+        		});
 				$.fancybox.close();
 				window.location.reload();   
 			}
@@ -15,9 +21,8 @@ $(function(){
 });
 //-->
 </script>
-<div class="newFancy_bookInfo"><img
-	src="<?php echo $bookinfo['image'];?>"
-	class="newFancy_bookInfo_cover">
+<div class="newFancy_bookInfo">
+	<img src="<?php echo $bookinfo['image'];?>" class="newFancy_bookInfo_cover">
     <ul class="newFancy_bookInfo_ul">
     	<li class="newFancy_bookInfo_ul_name"><?php echo $bookinfo['title']?></li>
     	<li>ISBN：<?php echo $bookinfo['isbn13'];?></li>
@@ -26,6 +31,6 @@ $(function(){
     	<li>出版时间：<?php echo $bookinfo['pubdate'];?></li>
     	<li>定价：<?php echo $bookinfo['price'];?></li>
     </ul>
-    
+    <div class="clear_float"></div>
     <input type="button" id="confirm_book" value="确认" />
 </div>

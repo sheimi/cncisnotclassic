@@ -28,8 +28,8 @@
         					<td><?php echo $userInfo['username'];?></td>
         				</tr>
         				<tr>
-        					<td>百合Id</td>
-        					<td><?php echo $userInfo['bbs_name'];?></td>
+        					<td>专业</td>
+        					<td><?php echo $userInfo['major'];?></td>
         				</tr>
         				<tr>
         					<td>邮箱</td>
@@ -45,18 +45,22 @@
         		<div class="content-box">
         			<?php foreach ($recommendBookList as $book){?>
         				<div class="book">
+        					<a href="<?php echo Yii::app()->request->baseUrl . '/index.php?r=cs/books/viewbook&bid=' . $book['book_id'];?>">
     						<img src="<?php echo $book['image'];?>">
+    						</a>
         					<?php echo $book['book_name']?>
         				</div>
         			<?php }?>
         			<div class="clear_float"></div>
         		</div>
         		
-        		<div class="box-title">我有的书&nbsp;&nbsp;<span><a href="index.php?r=members/profile/recommendbooks">查看全部&gt;&gt;</a></span></div>
+        		<div class="box-title">我有的书&nbsp;&nbsp;<span><a href="index.php?r=members/profile/ownbook">查看全部&gt;&gt;</a></span></div>
         		<div class="content-box">
         			<?php foreach ($ownBookList as $book){?>
         				<div class="book">
+        					<a href="<?php echo Yii::app()->request->baseUrl . '/index.php?r=cs/books/viewbook&bid=' . $book['book_id'];?>">
     						<img src="<?php echo $book['image'];?>">
+    						</a>
         						<?php echo $book['book_name']?>
         				</div>
         			<?php }?>

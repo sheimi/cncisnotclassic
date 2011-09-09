@@ -2,11 +2,6 @@
 <div class="course-detail">
 	<div class="class-name">
     	<a href="index.php?r=cs/course/view&cid=<?php echo $course['course_id'];?>"><?php echo $course['course_name']; ?></a>
-    	<?php if(isset($course['star'])){?>
-    	<span courseid="<?php echo $course['course_id']?>" class="mark-course">评分：<?php echo $course['star'];?></span>
-    	<?php }else{?>
-    	<span courseid="<?php echo $course['course_id']?>" class="mark-course">关注一下</span>
-    	<?php }?>
 	</div>
 	<div>
 		<div>

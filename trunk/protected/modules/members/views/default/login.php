@@ -1,6 +1,7 @@
 <div id="content">
 <div id="login">
     <div class="form">
+    	<h1>XXX系统登录</h1>
         <?php $form=$this->beginWidget('CActiveForm', array(
         	'id'=>'login-form-login-form',
         	'enableAjaxValidation'=>false,
@@ -10,24 +11,25 @@
         </div>
     
     	<div class="row">
-    		<?php echo $form->labelEx($model,'username'); ?>
+    		<?php echo $form->labelEx($model,'用户名'); ?>
     		<?php echo $form->textField($model,'username'); ?>
     	</div>
     
     	<div class="row">
-    		<?php echo $form->labelEx($model,'password'); ?>
+    		<?php echo $form->labelEx($model,'密码'); ?>
     		<?php echo $form->textField($model,'password'); ?>
     	</div>
     
+    	<div class="row">
+        		<?php echo CHtml::submitButton('Submit', array('class'=>'cnc-button', 'id'=>'loginbtn')); ?>
+    	</div>
+    	
     	<div class="row remember">
     		<?php echo $form->labelEx($model,'记住密码'); ?>
     		<?php echo $form->checkBox($model,'rememberMe'); ?>
         	<a href="<?php echo Yii::app()->request->baseUrl . '/index.php?r=members/default/register'?>">注册新用户</a>
     	</div>
     	
-    	<div class="row">
-        		<?php echo CHtml::submitButton('Submit'); ?>
-    	</div>
     
         <?php $this->endWidget(); ?>
     </div>

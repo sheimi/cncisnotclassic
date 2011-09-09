@@ -9,6 +9,25 @@
 class SearchController extends Controller
 {
     private $pageCapacity = 20;
+    public function accessRules()
+	{
+		return array (
+		    //这只该Controller下面对应的所有Action未登录用户都不能访问
+		    array (
+		    'deny', 
+		    'actions' => array (), 
+		    'users' => array ('?')),
+	    );
+	}
+
+	// Uncomment the following methods and override them if needed
+	public function filters()
+	{
+		// return the filter configuration for this controller, e.g.:
+		return array(
+			'accessControl',
+		);
+	}
 	public function actionIndex()
 	{
 		$this->render ( 'index' );
@@ -108,6 +127,7 @@ class SearchController extends Controller
             	        'courseList'=>$courseList,
             	        'currenttab'=>'course',
             	    	'favCourseList' => $favCourseList,
+            	        'q'=>$q
             	    ));
             	    
 	                break;
@@ -141,7 +161,7 @@ class SearchController extends Controller
         				$results[] = $teacher_info;
         			}
         			
-        			$this->renderPartial('teacher', array('teacherList'=>$results, 'q'=>$searchCourse));
+        			$this->renderPartial('teacher', array('teacherList'=>$results, 'q'=>$q));
 	                break;
                 case 'classroom':
 	                break;
@@ -451,7 +471,7 @@ class SearchController extends Controller
 	    
 	    $db = Yii::app()->db;
 	    // TODO 这里先用不太优雅的方式实现
-	    $sql = "SELECT c.course_name AS course_name, c.course_id AS course_id, COUNT(member_id) AS total FROM like_course lc JOIN course c ON lc.course_id = c.course_id GROUP BY course_id ORDER BY total DESC  LIMIT 0, $num";
+	    $sql = "SELECT c.course_name AS course_name, c.course_id AS course_id, COUNT(member_id) AS total FROM like_course lc JOIN course c ON lc.course_id = c.course_id WHERE lc.star >= 4 GROUP BY course_id ORDER BY total DESC  LIMIT 0, $num";
 	    $cmd = $db->createCommand($sql);
 	    $rows = $cmd->queryAll();
 	    
@@ -462,7 +482,6 @@ class SearchController extends Controller
 	        $favCourse['course_name'] = $row['course_name'];
 	        $favCourse['course_id'] = $row['course_id'];
 	        $favCourse['course_fans'] = $row['total'];
-	        
 	        $favCourseList[] = $favCourse;
 	    }
 	    return $favCourseList;

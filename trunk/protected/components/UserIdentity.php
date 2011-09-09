@@ -18,16 +18,11 @@ class UserIdentity extends CUserIdentity
 	private $_user_id;
 	public function authenticate()
 	{
-		$users = array (// username => password
-		'demo' => 'demo', 'admin' => 'admin', 'javoft' => 'j' );
-		
 		$record = Users::model ()->findByAttributes ( array ('username' => $this->username ) );
+		
 		if ($record === null)
 			$this->errorCode = self::ERROR_USERNAME_INVALID;
-		/**
-		 * @todo 此处密码暂未使用md5加密
-		 */
-		else if ($record->password !== $this->password)
+		else if ($record->password !== md5($this->password))
 			$this->errorCode = self::ERROR_PASSWORD_INVALID;
 		else
 		{

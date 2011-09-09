@@ -21,6 +21,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/js/autocomplete/lib/thickbox.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/js/fancybox/jquery.fancybox-1.3.4.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/js/jrating_v2.1/jquery/jRating.jquery.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/js/toastmessage/resources/css/jquery.toastmessage.css" />
 	
 	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/jquery-1.5.1.js');?>
 	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/ui/jquery-ui-1.8.11.custom.js');?>
@@ -36,6 +37,7 @@
 	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/localdata.js');?>
 	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/jquery.cookie.js');?>
 	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/jrating_v2.1/jquery/jRating.jquery.js');?>
+	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/toastmessage/javascript/jquery.toastmessage.js');?>
 
 	<script type="text/javascript">
     <!--
@@ -64,10 +66,9 @@
 				array('label'=>'首页', 'url'=>array('/default/default')),
 				array('label'=>'个人中心', 'url'=>array('/members/profile')),
 				array('label'=>'关于我们', 'url'=>array('/default/site/about')),
-				//array('label'=>'联系我们', 'url'=>array('/default/site/contactus')),
 				array('label'=>'项目反馈', 'url'=>array('/default/site/feedback')),
-				array('label'=>'Login', 'url'=>array('/members/default/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/members/default/logout'), 'visible'=>!Yii::app()->user->isGuest)
+				array('label'=>'登录', 'url'=>array('/members/default/login'), 'visible'=>Yii::app()->user->isGuest),
+				array('label'=>'登出 ('.Yii::app()->user->name.')', 'url'=>array('/members/default/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),
 		)); ?>
 	</div><!-- mainmenu -->
