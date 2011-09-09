@@ -54,7 +54,7 @@
 							$('#majors').html('');
 							$('#majors').append('<option>请选择</option>');
 							for (i in majorList){
-								$('#majors').append('<option>' + majorList[i]['name'] + '</option>');
+								$('#majors').append('<option  value="' + majorList[i]['id'] + '">' + majorList[i]['name'] + '</option>');
 							}
 						}
 					});
@@ -107,15 +107,15 @@
     		
     	<li id="passwordErr" class="worry_tis"></li>
     	<li class="major"><span class="lf">专&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业：</span> 
-    		<select id="deps" name="major">
+    		<select id="deps" name="dep">
 			<option value="-1">请选择</option>
     		<?php foreach($depList as $dep){?>
     			<option value="<?php echo $dep['dep_id'];?>"><?php echo $dep['dep_name'];?></option>
     		<?php }?>
     		
     		</select>
-    		<select id="majors">
-    			<option>请选择</option>
+    		<select id="majors" name="major">
+    			<option value='-1'>请选择</option>
     		</select>
     		&nbsp;&nbsp;&nbsp;&nbsp;<span class="error" id="majorError" class="worry_tis"></span>
     	</li>
@@ -123,7 +123,7 @@
     	<li class="btn">
     	<dl>
     		<dd><input id="registerSubmit" name="registerSubmit" type="submit"
-    			value="入驻CNC" class="reg_btn"></dd>
+    			value="发送注册邮件" class="reg_btn"></dd>
     	</dl>
     	</li>
     </ul>
