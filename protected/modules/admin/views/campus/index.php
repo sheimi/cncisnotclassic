@@ -1,7 +1,4 @@
 <?php
-$this->breadcrumbs=array(
-	'Campuses',
-);
 
 $this->menu=array(
 	array('label'=>'Create Campus', 'url'=>array('create')),

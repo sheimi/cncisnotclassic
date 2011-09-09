@@ -1,7 +1,4 @@
 <?php
-$this->breadcrumbs=array(
-	'Myclasses',
-);
 
 $this->menu=array(
 	array('label'=>'Create Myclass', 'url'=>array('create')),
