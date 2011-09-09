@@ -44,7 +44,7 @@ $(function(){
 	<label for="isbn"></label>
 	<input name="isbn" id="toadd_isbn" type="text" value="ISBN号" >
 	<input type="button" id="getbookdata" value="获取书籍数据">
-	<div style="margin:5px;">不知道ISBN号可以到<a href="http://book.douban.com/" target="_blank">豆瓣图书</a>更具书名搜索哦</div>
+	<div style="margin:5px;">不知道ISBN号可以到<a href="http://book.douban.com/" target="_blank">豆瓣图书</a>根据书名搜索哦</div>
 	<div id="bookinfo">
 		<div>
 			<img src="images/doubanbook.png">

@@ -48,6 +48,6 @@
 			<span  class="next"><a href="index.php?r=default/site/feedback&page=<?php echo $page + 1;?>">下一页</a></span>
 		<?php }?>
 		
-		<span class="next">(共<?php echo $totalPage;?>)页</span>
+		<span class="next">(共<?php echo $totalPage;?>页)</span>
 	</div>
 </div>

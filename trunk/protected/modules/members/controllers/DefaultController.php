@@ -89,7 +89,7 @@ class DefaultController extends Controller
 	        $msg = '';
 	        if(sizeof($row2))
 	        {
-                $msg .= '邮箱已经被使用';
+                $msg .= '邮箱已经被使用<br/>';
 	        }
 	        if( sizeof($row2)){
 	            $msg .= '用户名已经被使用';
@@ -102,21 +102,21 @@ class DefaultController extends Controller
 	        }
 	        
             $userpassword = $this->get_password();
-            $this->sendPwd($userpassword);
+            $this->sendPwd($username, $email, $userpassword);
             $attributes = array(
     	    	'major_id'=>$major,
     	    	'email'=>$email,
     	    	'grade'=>$grade,
-    	        'password'=>md5($username, $email, $userpassword),
+    	        'password'=>md5($userpassword),
     	    	'username'=>$username,
     	    );
     	    
             $userModel = new Users;
             $userModel->attributes = $attributes;
             if($userModel->save()){
-                echo $userModel->errors;
+                $this->render('sendfinish', array('msg'=>'邮件发送完成<a href="http://smail.nju.edu.cn">到邮箱查看密码</a>'));
             }else{
-                 var_dump ( $userModel->errors);
+                 $this->render('sendfinish', array('msg'=>$userModel->errors));
             }
 	    }
     }
