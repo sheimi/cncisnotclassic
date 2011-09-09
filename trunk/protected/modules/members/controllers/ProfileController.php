@@ -79,7 +79,7 @@ class ProfileController extends Controller
 	        'myclass'=>$myClassList,
 	        'userInfo'=>$currentUserInfo,
 	        'keepPrivate'=>$keepPrivate,
-	        'errorMsg'=>$errorMsg,
+	        //'errorMsg'=>$errorMsg,
 	    );
 	    $this->render('index', $return);
 	}
