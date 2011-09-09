@@ -92,6 +92,7 @@ return array(
         'cs', 
         'members',
         'default',
+        'admin',
     ),
     
     'defaultController'=>'default',
