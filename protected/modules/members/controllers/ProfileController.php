@@ -2,6 +2,27 @@
 
 class ProfileController extends Controller
 {
+    
+    public function accessRules()
+	{
+		return array (
+		    //这只该Controller下面对应的所有Action未登录用户都不能访问
+		    array (
+		    'deny', 
+		    'actions' => array (), 
+		    'users' => array ('?')),
+	    );
+	}
+
+	// Uncomment the following methods and override them if needed
+	public function filters()
+	{
+		// return the filter configuration for this controller, e.g.:
+		return array(
+			'accessControl',
+		);
+	}
+	
 	public function actionAdd()
 	{
 		$this->render('add');
@@ -30,11 +51,12 @@ class ProfileController extends Controller
 	        $book = array();
 	        $book['book_name'] = $row->book_name;
 	        $book['image'] = $row->cover_path;
-	        $book['book_id'] = $row->book_name;
+	        $book['book_id'] = $row->book_id;
 	        $book['add_time'] = $row->add_time;
 	        $bookList[] = $book;
 	    }
 	    
+	    //获取他标记为有的书
 	    $rows = OwnerBook::model()
 	    ->with('book')
 	    ->findAll("provider = :memberId", array(':memberId'=>$memberId));
@@ -57,28 +79,28 @@ class ProfileController extends Controller
 	    //获取他的课程表
 	    $userId = Yii::app()->user->getState('user_id');
 	    
-	    $myClassList = $this->getMyClass($userId);
+//	    $myClassList = $this->getMyClass($userId);
 	    
 	    //获取用户喜欢的课程
-	    $likeCourseList = $this->getLikeCourse($memberId);
+//	    $likeCourseList = $this->getLikeCourse($memberId);
 	    
 	    //获得当前用户资料
 	    $currentUserInfo = $this->getUserInfo($memberId);
 	    
 	    //获取用户的隐私设置
-	    $row = KeepPrivate::model()->findByPk($memberId);
-	    $keepPrivate['user_id'] = $row->user_id;
-	    $keepPrivate['email'] = $row->bbs_name;
-	    $keepPrivate['myclass'] = $row->myclass;
+//	    $row = KeepPrivate::model()->findByPk($memberId);
+//	    $keepPrivate['user_id'] = $row->user_id;
+//	    $keepPrivate['email'] = $row->bbs_name;
+//	    $keepPrivate['myclass'] = $row->myclass;
 	    
 	    $return = array(
 	        'recommendBookList' => $bookList,
 	        'ownBookList' => $ownBookList,
 	        'updownBookList' => $updownBookList,
-	        'favCourseList' => $likeCourseList,
-	        'myclass'=>$myClassList,
+//	        'favCourseList' => $likeCourseList,
+//	        'myclass'=>$myClassList,
 	        'userInfo'=>$currentUserInfo,
-	        'keepPrivate'=>$keepPrivate,
+//	        'keepPrivate'=>$keepPrivate,
 	        //'errorMsg'=>$errorMsg,
 	    );
 	    $this->render('index', $return);
@@ -183,12 +205,31 @@ class ProfileController extends Controller
 	    $this->render('recommendbooks', array('recommendBookList'=>$bookList));
 	}
 	
-	public function actionCommentedbooks()
+	public function actionOwnbook()
 	{
 	    $memberId = Yii::app()->user->getState('user_id');
-	    $updownCourseList = $this->getUpdownCourse($memberId);
+	    $ownbookList = $this->getOwnbook($memberId);
 	    
-	    $this->render('commentedbooks', array('updownBookList'=>$updownCourseList));
+	    $this->render('ownbook', array('ownbookList'=>$ownbookList));
+	}
+	
+	public function getOwnbook($memberId){
+	    $rows = OwnerBook::model()
+	    ->with('book')
+	    ->findAll('owner_id = :owner_id', array(':owner_id'=>$memberId));
+	    
+	    $ownbookList = array();
+	    foreach ($rows as $row)
+	    {
+	        $book = array();
+	        $book['image'] = $row->book->cover_path;
+	        $book['book_name'] = $row->book->book_name;
+	        $book['book_id'] = $row->book->book_id;
+	        $book['access'] = $row->access;
+	        $ownbookList[] = $book;
+	    }
+	    
+	    return $ownbookList;
 	}
 	
 	/**
@@ -271,7 +312,6 @@ class ProfileController extends Controller
 	            }
 	        }else{
 	            //如果没有取出结果，说明还未初始化课表
-	            echo "Initclass";
 	            $this->initclass();
 	            $rows = Myclass::model()
 	            ->findAll('member_id = :member_id', array(':member_id'=>$userId));

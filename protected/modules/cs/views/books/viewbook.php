@@ -26,7 +26,14 @@ $(function(){
 		  	url: "<?php echo Yii::app()->request->baseUrl . '/index.php?r=members/havebook/add'?>",
 		  	data: "bookid=" + bookid + "&" + "access=" + access,
 			success: function(data, textStatus){
-				alert(data);
+    			var msg = '标记成功';
+        		$().toastmessage('showToast', {
+        		    text     : msg,
+        		    sticky   : false,
+        		    position : 'top-center',
+        		    type     : 'success',
+        		    stayTime: 5000
+        		});
 				window.location.reload();   
 			}
 		});
@@ -44,9 +51,14 @@ $(function(){
 			success:function(data){
 				var comment = jQuery.parseJSON(data);
 				var newComment = createCommentHtml(comment);
+				
 				var targetArea = $('#other-comment');
 				$('.no-comment').remove();
-				targetArea.append(newComment);
+				if( targetArea.children().size() != 0){
+					targetArea.children().first().before(newComment);
+				}else{
+					targetArea.append(newComment);
+				}
 				$('#comment-area').val('');
 			}
 		});
@@ -95,7 +107,14 @@ $(function(){
 			url:"<?php echo Yii::app()->request->baseUrl . '/index.php?r=members/cbupdown/up'?>",
 			data:"cbid=" + cbid,
 			success: function(data, status){
-    			alert(data);
+        		var msg = '推荐课程成功';
+        		$().toastmessage('showToast', {
+        		    text     : msg,
+        		    sticky   : false,
+        		    position : 'top-center',
+        		    type     : 'success',
+        		    stayTime: 500
+        		});
     		}
     	});
     });
@@ -107,13 +126,21 @@ $(function(){
 			url:"<?php echo Yii::app()->request->baseUrl . '/index.php?r=members/cbupdown/down'?>",
 			data:"cbid=" + cbid,
 			success: function(data, status){
-				alert(data);
+        		var msg = '不合适的课程就应该踩下去';
+        		$().toastmessage('showToast', {
+        		    text     : msg,
+        		    sticky   : false,
+        		    position : 'top-center',
+        		    type     : 'success',
+        		    stayTime: 500
+        		});
     		}
     	});
     });
 }
 );
 var bookid = <?php echo $book['book_id'];?>;
+var uid = <?php echo $uid;?>;
 function getMajor(depid){
 	$("#course-select-box").fadeOut();
 	$.ajax({
@@ -146,7 +173,7 @@ function getMajor(depid){
 		error: function(data, status){
 		}
 	});
-}te
+}
 
 function getCourse(majorId){
 	$.ajax({
@@ -160,7 +187,7 @@ function getCourse(majorId){
 				var course = courses[i];
 				$("#course-select-box").append("<span " + "courseid=\"" + course['course_id'] + "\" class=\"selectable-course\">" + course['course_name'] + "</span><span>&nbsp;|&nbsp;</span>");
 			}
-			if(i == 0){
+			if(i == 0){		
     			$("#course-select-box").append('<div>下级没有数据</div>');
 			}
 			$("#course-select-box").append('<div class="clear_float"></div>');
@@ -207,7 +234,7 @@ function createCommentHtml(comment){
  	commentHtml += comment['content'];
  	commentHtml += '</div>';
  	commentHtml += '<div class="comment-meta">';
- 	commentHtml += "评论者：" + comment['username'] + "评论时间：" + comment['add_time'] + "评价者院系：" + comment['major'];
+ 	commentHtml += "评论者：" + comment['major'] + "&nbsp;<a href='<?php echo Yii::app()->request->baseUrl . "/index.php?r=members/profile/view&uid=";?>" + uid +"' >" + comment['username']+ "</a>" + " 评论时间：" + comment['add_time'];
  	commentHtml += '</div>';
  	commentHtml += '</div>';
 	return commentHtml;
@@ -224,20 +251,31 @@ function createCommentHtml(comment){
     		 <div class="book-info">
             	 <div>书名：<span class="book-title"><?php echo $book['book_name'];?></span></div>
             	 <div>作者：<span class="book-title"><?php echo $book['author'];?></span></div>
+            	 <div>ISBN：<span class="book-title"><?php echo $book['isbn'];?></span></div>
             	 <div>出版社：<span class="book-title"><?php echo $book['publisher'];?></span></div>
             	 <div>出版时间：<span class="book-title"><?php echo $book['pubdate'];?></span></div>
         		 <div>推荐人: <a href="<?php echo Yii::app()->request->baseUrl . '/index.php?r=members/profile/view&uid=' . $book['provider_id'];?>"><?php echo $book['provider_name'];?></a></div>
+        		 <div>到<a href="http://book.douban.com/subject_search?search_text=<?php echo $book['isbn'];?>">豆瓣图书</a>看看</div>
         	 </div>
 		 	 <div class="clear_float"></div>
+		 	 <!-- 
 		 	 <div class="first-comment">
     		 	<h6>图书添加者对此书的评价：</h6>
     		 	<p>
     		 		<?php echo $book['comment'];?>
     		 	</p>
              </div>
+		 	  -->
 		 	 <div class="clear_float"></div>
          </div>
-        		 
+        		
+        <div id="add-comment">
+		 	<div id="comment-content">
+		 		<textarea id="comment-area"></textarea>
+		 	</div>
+		 	<div class="clear_float"></div>
+		 	<button id="submit-comment">提交评价</button>
+		 </div> 
 		 <div class="clear_float"></div>
 		 <div class="other-comment" id="other-comment">
     		 <?php if(!$bookComments){?>
@@ -266,20 +304,13 @@ function createCommentHtml(comment){
 		 	<div pagenum="0" id="nextpage">更多评论...</div>
 		 <?php }?>
 		 <div class="clear_float"></div>
-		 <div id="add-comment">
-		 	<div id="content">
-		 		<textarea id="comment-area"></textarea>
-		 	</div>
-		 	<div class="clear_float"></div>
-		 	<button id="submit-comment">提交书籍评价</button>
-		 </div>
     </div>
 </div>
 
 <div id="content-right" class="viewbook">
 	<div class="side-box">
 		<?php if($relCourse){?>
-    	<div class="title"><span>相关的NJU课程</span><span class="add_course" id="add-course"><a>推荐课程</a></span></div>
+    	<div class="title"><span>相关的NJU课程</span><span class="add_course cnc-button" id="add-course"><a>推荐课程</a></span></div>
     	<?php foreach ($relCourse as $course) {
         ?>
     	<div class="course-name">

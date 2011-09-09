@@ -7,6 +7,25 @@
 class BooksController extends Controller
 {
     private $commentPageSize = 2;
+    public function accessRules()
+	{
+		return array (
+		    //这只该Controller下面对应的所有Action未登录用户都不能访问
+		    array (
+		    'deny', 
+		    'actions' => array (), 
+		    'users' => array ('?')),
+	    );
+	}
+
+	// Uncomment the following methods and override them if needed
+	public function filters()
+	{
+		// return the filter configuration for this controller, e.g.:
+		return array(
+			'accessControl',
+		);
+	}
 	public function actionAddbook()
 	{
 	    $bookName = $_REQUEST['title'];
@@ -125,6 +144,7 @@ class BooksController extends Controller
 		//整理数据库中取出的数据
 		$book ['book_id'] = $row->book_id;
 		$book ['book_name'] = $row->book_name;
+		$book ['isbn'] = $row->isbn;
 		$book ['comment'] = $row->comment;
 		$book ['publisher'] = $row->publisher;
 		$book ['author'] = $row->author;
@@ -188,6 +208,7 @@ class BooksController extends Controller
 		'bookComments' => $commentList, 
 		'deps' => $deps,
 		'commentPageSize' => $this->commentPageSize, 
+		'uid'=>$memberId
 		) );
 	
 	}
@@ -277,7 +298,7 @@ class BooksController extends Controller
 				break;
 			case 'getcourse' :
 				$majorid = $_REQUEST ['majorid'];
-				$rows = Actualclass::model ()->findAll ( array ('select' => 'course_id', 'condition' => "major_id = $majorid" ) );
+				$rows = Actualclass::model ()->findAll ( array ('select' => 'course_id', 'condition' => "major_id = '$majorid'" ) );
 				
 				$courseids = array ();
 				foreach ( $rows as $row )

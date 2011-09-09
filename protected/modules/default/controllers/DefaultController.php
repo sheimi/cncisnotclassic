@@ -9,6 +9,26 @@
  */
 class DefaultController extends Controller
 {
+    public function accessRules()
+	{
+		return array (
+		    //这只该Controller下面对应的所有Action未登录用户都不能访问
+		    array (
+		    'deny', 
+		    'actions' => array (), 
+		    'users' => array ('?')),
+	    );
+	}
+
+	// Uncomment the following methods and override them if needed
+	public function filters()
+	{
+		// return the filter configuration for this controller, e.g.:
+		return array(
+			'accessControl',
+		);
+	}
+	
 	public function actionIndex()
 	{
 		if (Yii::app ()->user->isGuest)

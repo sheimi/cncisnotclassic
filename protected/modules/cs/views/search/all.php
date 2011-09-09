@@ -45,8 +45,7 @@
     <div id="search-result">
 	 	<ul class="sresult-type">
     		<li  qid="course" class="active-sr">课程</li>
-    		<li  qid="teacher">老师</li>
-    		<!-- <li qid="classroom">教室</li>  -->
+    		<li  qid="teacher">教师</li>
     		<li qid="book">课本</li>
     	</ul>
     	<hr>
@@ -55,11 +54,6 @@
             <div class="course-detail">
             	<div class="class-name">
                 	<a href="index.php?r=cs/course/view&cid=<?php echo $course['course_id'];?>"><?php echo $course['course_name']; ?></a>
-                	<?php if(isset($course['star'])){?>
-                	<span courseid="<?php echo $course['course_id']?>" class="mark-course">评分：<?php echo $course['star'];?></span>
-                	<?php }else{?>
-                	<span courseid="<?php echo $course['course_id']?>" class="mark-course">关注一下</span>
-                	<?php }?>
             	</div>
             	<div>
             		<div>
@@ -69,7 +63,7 @@
                 					<div>
                         			<?php
                         			 echo '开课院系：' . $m->major_name;
-                        			 $major_id = $m->major_id;
+                        		    	 $major_id = $m->major_id;
                         			 ?>
                 					</div>
                         			 <span>上课教师：</span>
@@ -80,14 +74,16 @@
                         			 } 
                         			 ?> 
                 			</div>
-            			<?php
-            			} ?>
+            			<?php } ?>
+            			
                 		</div>
                 		<div class="clear_float"></div>
             		</div>
             	</div>
             </div>
-            <?php }?>
+            <?php }else{
+			    echo "找不到和您的查询\" $q\"相符的内容或信息。";
+			}?>
 		</div>
     </div>
 </div>
