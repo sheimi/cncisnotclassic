@@ -290,7 +290,7 @@ div.search-form
 #login .form .row label{
 	font-size:1.8em;
 }
-#login .form .row input[type=text]{
+#login .form .row input[type=text],#login .form .row input[type=password] {
 	float:right;
 	width:200px;
 	height:1.8em;

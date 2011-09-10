@@ -3,7 +3,7 @@ $(function(){
 	var commentSize = <?php echo $commentPageSize; ?>;
 	$("#add-course").fancybox({
 	    'width'			: 700,
-	    'height'		 : 400,
+	    'height'		 : 600,
 	    'centerOnScroll' : 'yes',
 	    'transitionIn'   : 'elastic',
 	    'transitionOut'  : 'elastic',
