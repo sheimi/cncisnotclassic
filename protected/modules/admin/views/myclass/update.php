@@ -1,9 +1,4 @@
 <?php
-$this->breadcrumbs=array(
-	'Myclasses'=>array('index'),
-	$model->myclass_id=>array('view','id'=>$model->myclass_id),
-	'Update',
-);
 
 $this->menu=array(
 	array('label'=>'List Myclass', 'url'=>array('index')),

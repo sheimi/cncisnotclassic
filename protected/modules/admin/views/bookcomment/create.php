@@ -1,9 +1,4 @@
 <?php
-$this->breadcrumbs=array(
-	'Bookcomments'=>array('index'),
-	'Create',
-);
-
 $this->menu=array(
 	array('label'=>'List Bookcomment', 'url'=>array('index')),
 	array('label'=>'Manage Bookcomment', 'url'=>array('admin')),

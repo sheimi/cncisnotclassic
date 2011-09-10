@@ -1,9 +1,4 @@
 <?php
-$this->breadcrumbs=array(
-	'Books'=>array('index'),
-	$model->book_id,
-);
-
 $this->menu=array(
 	array('label'=>'List Books', 'url'=>array('index')),
 	array('label'=>'Create Books', 'url'=>array('create')),

@@ -1,9 +1,4 @@
 <?php
-$this->breadcrumbs=array(
-	'Departments'=>array('index'),
-	$model->dep_id=>array('view','id'=>$model->dep_id),
-	'Update',
-);
 
 $this->menu=array(
 	array('label'=>'List Departments', 'url'=>array('index')),

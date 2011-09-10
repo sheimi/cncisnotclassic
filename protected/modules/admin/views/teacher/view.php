@@ -1,8 +1,4 @@
 <?php
-$this->breadcrumbs=array(
-	'Teachers'=>array('index'),
-	$model->teacher_id,
-);
 
 $this->menu=array(
 	array('label'=>'List Teacher', 'url'=>array('index')),

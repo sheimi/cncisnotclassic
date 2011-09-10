@@ -1,9 +1,4 @@
 <?php
-$this->breadcrumbs=array(
-	'Majors'=>array('index'),
-	$model->major_id=>array('view','id'=>$model->major_id),
-	'Update',
-);
 
 $this->menu=array(
 	array('label'=>'List Major', 'url'=>array('index')),

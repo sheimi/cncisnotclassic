@@ -40,7 +40,7 @@ class UsersController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -82,6 +82,7 @@ class UsersController extends Controller
 		));
 	}
 
+
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
@@ -117,8 +118,8 @@ class UsersController extends Controller
 		{
 			// we only allow deletion via POST request
 			$this->loadModel($id)->delete();
-
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+			
 			if(!isset($_GET['ajax']))
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 		}
