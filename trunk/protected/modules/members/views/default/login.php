@@ -17,7 +17,7 @@
     
     	<div class="row">
     		<?php echo $form->labelEx($model,'密码'); ?>
-    		<?php echo $form->textField($model,'password'); ?>
+    		<?php echo $form->passwordField($model,'password'); ?>
     	</div>
     
     	<div class="row">

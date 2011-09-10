@@ -313,6 +313,7 @@ array ('major' => array ('select' => 'major_id, major_name' ) ) )->findAll ( "co
         }  else { 
           $bookinfo = false; 
         } 
+        
 		return $bookinfo;
 	}
 	
