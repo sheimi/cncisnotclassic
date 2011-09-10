@@ -35,8 +35,8 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'books-grid',
-	'dataProvider'=>$model->search(),
-	'filter'=>$model,
+  'selectableRows'=>0,
+	'dataProvider'=>$dataProvider,
 	'columns'=>array(
 		'book_id',
 		'book_name',
@@ -56,3 +56,11 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		),
 	),
 )); ?>
+
+<script>
+$(document).ready(function() {
+  $('.items tr').click(function() {
+    window.location = $(this).find('a').attr('href');
+  });
+});
+</script>

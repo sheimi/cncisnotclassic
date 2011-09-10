@@ -109,17 +109,13 @@ class TeacherController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		if(Yii::app()->request->isPostRequest)
-		{
 			// we only allow deletion via POST request
 			$this->loadModel($id)->delete();
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-		}
-		else
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+		
 	}
 
 	/**
@@ -129,7 +125,7 @@ class TeacherController extends Controller
 	{
 		$dataProvider=new CActiveDataProvider('Teacher', array(
                     'Pagination' => array (
-                      'pageSize' => 50
+                      'pageSize' => 80
                     ),
                   ));
 		$this->render('index',array(
@@ -146,9 +142,15 @@ class TeacherController extends Controller
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Teacher']))
 			$model->attributes=$_GET['Teacher'];
+		$dataProvider=new CActiveDataProvider('Teacher', array(
+                    'Pagination' => array (
+                      'pageSize' => 80
+                    ),
+                  ));
 
 		$this->render('admin',array(
 			'model'=>$model,
+			'dataProvider'=>$dataProvider,
 		));
 	}
 

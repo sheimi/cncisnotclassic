@@ -4,7 +4,8 @@ $this->menu=array(
 	array('label'=>'List Actualclass', 'url'=>array('index')),
 	array('label'=>'Create Actualclass', 'url'=>array('create')),
 	array('label'=>'Update Actualclass', 'url'=>array('update', 'id'=>$model->class_id)),
-	array('label'=>'Delete Actualclass', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->class_id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Delete Actualclass', 'url'=>'#'),
+	//array('label'=>'Delete Actualclass', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->class_id),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Manage Actualclass', 'url'=>array('admin')),
 );
 ?>
@@ -25,3 +26,21 @@ $this->menu=array(
 		'site',
 	),
 )); ?>
+
+<script>
+$(document).ready(function() {
+  $('.operations a').each(function() {
+    if($(this).attr('href') == '#') {
+      $(this).click(function() {
+        $.ajax({
+          type: 'POST',
+          url: '<?php echo Yii::app()->request->baseUrl; ?>/index.php?r=admin/actualclass/delete&id=<?php echo $model->class_id?>',
+          success: function($data) {
+            window.location = '<?php echo Yii::app()->request->baseUrl; ?>/index.php?r=admin/actualclass/index';
+          }
+        })
+      });
+    }
+  })
+})
+</script>

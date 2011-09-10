@@ -4,7 +4,8 @@ $this->menu=array(
 	array('label'=>'List Users', 'url'=>array('index')),
 	array('label'=>'Create Users', 'url'=>array('create')),
 	array('label'=>'Update Users', 'url'=>array('update', 'id'=>$model->user_id)),
-	array('label'=>'Delete Users', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->user_id),'confirm'=>'Are you sure you want to delete this item?')),
+  array('label'=>'Delete User', 'url'=>'#'),
+	//array('label'=>'Delete Users', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->user_id),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Manage Users', 'url'=>array('admin')),
 );
 ?>
@@ -26,3 +27,21 @@ $this->menu=array(
 		'avatar_path',
 	),
 )); ?>
+
+<script>
+$(document).ready(function() {
+  $('.operations a').each(function() {
+    if($(this).attr('href') == '#') {
+      $(this).click(function() {
+        $.ajax({
+          type: 'POST',
+          url: '<?php echo Yii::app()->request->baseUrl; ?>/index.php?r=admin/users/delete&id=<?php echo $model->user_id?>',
+          success: function($data) {
+            window.location = '<?php echo Yii::app()->request->baseUrl; ?>/index.php?r=admin/users/index';
+          }
+        })
+      });
+    }
+  })
+})
+</script>
