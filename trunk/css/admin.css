@@ -1,0 +1,23 @@
+li {
+  list-style: none;
+  margin: 10px;
+}
+
+#content-left {
+  font-family: Comic Sans, Comic Sans MS, cursive;
+}
+
+#yw0 {
+  padding-left: 0;
+}
+
+
+#yw0 li a {
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.item-key {
+  float: left;
+  width: 100px;
+}
