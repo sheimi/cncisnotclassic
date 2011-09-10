@@ -31,7 +31,7 @@ class CourseController extends Controller
 		$courseDetail ['course_id'] = $row->course_id;
 		$courseDetail ['course_name'] = $row->course_name;
 		
-		//需要选择出 院系信息
+		// 需要选择出 院系信息
 		$rows = Actualclass::model ()->with ( //一门课可能有多个老师
 array ('teachers' => array ('select' => 'teacher_id, teacher_name' ) ) )->with ( //一门Actualclass 只可能是一个院系的
 array ('major' => array ('select' => 'major_id, major_name' ) ) )->findAll ( "course_id = :course_id", array (':course_id' => $courseId ) );
