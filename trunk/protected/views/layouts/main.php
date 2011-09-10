@@ -81,7 +81,7 @@
 
 	<div class="clear_float"></div>
 	<div id="footer">
-		Copyright &copy; <?php //echo date('Y'); ?> by <a>LilyStudio</a>.<br/>
+		Copyright &copy; <?php echo date('Y'); ?> by <a>LilyStudio</a>.<br/>
 		All Rights Reserved.<br/>
 		<?php echo 'LilyStudio'; ?>
 	</div><!-- footer -->
