@@ -109,17 +109,13 @@ class CourseController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		if(Yii::app()->request->isPostRequest)
-		{
+		
 			// we only allow deletion via POST request
 			$this->loadModel($id)->delete();
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-		}
-		else
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 	}
 
 	/**
@@ -142,6 +138,11 @@ class CourseController extends Controller
 	 */
 	public function actionAdmin()
 	{
+		$dataProvider=new CActiveDataProvider('Course', array(
+                    'Pagination' => array (
+                      'pageSize' => 200
+                    ),
+                  ));
 		$model=new Course('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Course']))
@@ -149,6 +150,7 @@ class CourseController extends Controller
 
 		$this->render('admin',array(
 			'model'=>$model,
+			'dataProvider'=>$dataProvider,
 		));
 	}
 
@@ -159,7 +161,7 @@ class CourseController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Course::model()->findByPk((int)$id);
+		$model=Course::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;

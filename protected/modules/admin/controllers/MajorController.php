@@ -109,17 +109,12 @@ class MajorController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		if(Yii::app()->request->isPostRequest)
-		{
 			// we only allow deletion via POST request
 			$this->loadModel($id)->delete();
 
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-		}
-		else
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 	}
 
 	/**
@@ -146,9 +141,15 @@ class MajorController extends Controller
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Major']))
 			$model->attributes=$_GET['Major'];
+		$dataProvider=new CActiveDataProvider('Major', array(
+                    'Pagination' => array (
+                      'pageSize' => 50
+                    ),
+                  ));
 
 		$this->render('admin',array(
 			'model'=>$model,
+			'dataProvider'=>$dataProvider,
 		));
 	}
 
@@ -159,7 +160,7 @@ class MajorController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Major::model()->findByPk((int)$id);
+		$model=Major::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
