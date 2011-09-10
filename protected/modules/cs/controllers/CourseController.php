@@ -319,7 +319,6 @@ array ('major' => array ('select' => 'major_id, major_name' ) ) )->findAll ( "co
 	
 	
 	public function parseXml($data) { 
-	    spl_autoload_unregister(array('YiiBase','autoload'));
         $doc = new DOMDocument();
         $doc->loadXML($data);
         $bookinfo = array();
@@ -337,7 +336,6 @@ array ('major' => array ('select' => 'major_id, major_name' ) ) )->findAll ( "co
         {
             $bookinfo[ $db_attr->getAttribute('name') ] = $db_attr->nodeValue;
         }
-        spl_autoload_register(array('YiiBase','autoload'));
         return $bookinfo;  
     }
 }
