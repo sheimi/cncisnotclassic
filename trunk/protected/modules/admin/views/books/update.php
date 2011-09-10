@@ -1,10 +1,4 @@
 <?php
-$this->breadcrumbs=array(
-	'Books'=>array('index'),
-	$model->book_id=>array('view','id'=>$model->book_id),
-	'Update',
-);
-
 $this->menu=array(
 	array('label'=>'List Books', 'url'=>array('index')),
 	array('label'=>'Create Books', 'url'=>array('create')),

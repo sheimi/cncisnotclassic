@@ -1,9 +1,4 @@
 <?php
-$this->breadcrumbs=array(
-	'Bookcomments'=>array('index'),
-	$model->bookcomment_id=>array('view','id'=>$model->bookcomment_id),
-	'Update',
-);
 
 $this->menu=array(
 	array('label'=>'List Bookcomment', 'url'=>array('index')),

@@ -1,8 +1,4 @@
 <?php
-$this->breadcrumbs=array(
-	'Departments'=>array('index'),
-	$model->dep_id,
-);
 
 $this->menu=array(
 	array('label'=>'List Departments', 'url'=>array('index')),

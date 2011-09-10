@@ -1,8 +1,4 @@
 <?php
-$this->breadcrumbs=array(
-	'Majors'=>array('index'),
-	'Create',
-);
 
 $this->menu=array(
 	array('label'=>'List Major', 'url'=>array('index')),

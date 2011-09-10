@@ -1,10 +1,4 @@
 <?php
-$this->breadcrumbs=array(
-	'Courses'=>array('index'),
-	$model->course_id=>array('view','id'=>$model->course_id),
-	'Update',
-);
-
 $this->menu=array(
 	array('label'=>'List Course', 'url'=>array('index')),
 	array('label'=>'Create Course', 'url'=>array('create')),

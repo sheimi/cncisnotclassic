@@ -1,9 +1,4 @@
 <?php
-$this->breadcrumbs=array(
-	'Actualclasses'=>array('index'),
-	'Manage',
-);
-
 $this->menu=array(
 	array('label'=>'List Actualclass', 'url'=>array('index')),
 	array('label'=>'Create Actualclass', 'url'=>array('create')),

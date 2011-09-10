@@ -1,5 +1,4 @@
 <?php
-
 $this->menu=array(
 	array('label'=>'Create Departments', 'url'=>array('create')),
 	array('label'=>'Manage Departments', 'url'=>array('admin')),

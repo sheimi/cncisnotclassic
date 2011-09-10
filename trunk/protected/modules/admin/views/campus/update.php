@@ -1,9 +1,4 @@
 <?php
-$this->breadcrumbs=array(
-	'Campuses'=>array('index'),
-	$model->campus_id=>array('view','id'=>$model->campus_id),
-	'Update',
-);
 
 $this->menu=array(
 	array('label'=>'List Campus', 'url'=>array('index')),
