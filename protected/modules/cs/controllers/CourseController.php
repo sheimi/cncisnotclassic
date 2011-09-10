@@ -196,7 +196,7 @@ array ('major' => array ('select' => 'major_id, major_name' ) ) )->findAll ( "co
     	        'recommender_id'=>( $memberId + 0)
 	        );
 	        
-            if( Coursebook::model()->findByAttributes($attributes) )
+            if( CourseBook::model()->findByAttributes($attributes) )
             {
                 //关联关系已经存在
                 echo '此书已经有人推荐过';
