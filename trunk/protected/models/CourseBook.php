@@ -30,7 +30,7 @@ class CourseBook extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'course_Book';
+		return 'course_book';
 	}
 
 	/**
