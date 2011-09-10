@@ -7,6 +7,7 @@ $this->menu=array(
 <h1>Users</h1>
 
 <?php
+
 $this->widget('zii.widgets.grid.CGridView', array(
       'dataProvider'=>$dataProvider,
       'selectableRows'=>0,
@@ -30,7 +31,9 @@ $this->widget('zii.widgets.grid.CGridView', array(
         'njuid',
         ),
       //'itemView'=>'_view',
-      )); ?>
+      ));
+
+?>
 <script>
 $(document).ready(function() {
   $('.items tr').click(function() {
