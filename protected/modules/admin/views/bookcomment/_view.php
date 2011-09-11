@@ -5,15 +5,21 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('book_id')); ?>:</b>
-	<?php echo CHtml::encode($data->book_id); ?>
+	<?php echo CHtml::encode($data->book->book_name); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('user_id')); ?>:</b>
-	<?php echo CHtml::encode($data->user_id); ?>
+	<?php echo CHtml::encode($data->user->username); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('content')); ?>:</b>
-	<?php echo CHtml::encode($data->content); ?>
+	<?php
+	$content = $data->content;
+	if (strlen($content) >= 100) {
+		$content = substr($content, 0, 201).'......';
+	}
+	echo CHtml::encode($content);
+	?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('add_time')); ?>:</b>

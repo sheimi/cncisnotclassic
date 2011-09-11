@@ -14,8 +14,14 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'bookcomment_id',
-		'book_id',
-		'user_id',
+    array(
+      'name' => 'book_id',
+      'value' => $model->book->book_name,
+    ),
+    array(
+      'name' => 'user_id',
+      'value' => $model->user->username,
+    ),
 		'content',
 		'add_time',
 		'star',

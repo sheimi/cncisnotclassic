@@ -39,8 +39,14 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'filter'=>$model,
 	'columns'=>array(
 		'bookcomment_id',
-		'book_id',
-		'user_id',
+    array(
+      'name' => 'book_id',
+      'value' => '$data->book->book_name',
+    ),
+    array(
+      'name' => 'user_id',
+      'value' => '$data->user->username',
+    ),
 		'add_time',
 		'star',
 		array(

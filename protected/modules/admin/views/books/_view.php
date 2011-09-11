@@ -13,7 +13,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('provider')); ?>:</b>
-	<?php echo CHtml::encode($data->provider); ?>
+	<?php echo CHtml::encode($data->providerdetail->username); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('cover_path')); ?>:</b>

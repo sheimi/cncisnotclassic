@@ -41,7 +41,10 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'book_id',
 		'book_name',
 		'isbn',
-		'provider',
+		array(
+      'name' => 'provider',
+      'value' => '$data->providerdetail->username',
+    ),
 		'cover_path',
 		'add_time',
 		/*
