@@ -89,7 +89,7 @@ return array(
             'class'=>'system.gii.GiiModule',
             'password'=>'j',
         ),
-        'cs', 
+        'cs',
         'members',
         'default',
         'admin',
