@@ -14,7 +14,10 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'major_id',
-		'dep_id',
+		array(
+      'name' => 'dep_id',
+      'value' => $model->dep->dep_name,
+		),
 		'major_name',
 	),
 )); ?>

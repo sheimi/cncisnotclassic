@@ -15,13 +15,21 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'class_id',
-		'course_id',
+		array(
+      'name' => 'course_id',
+      'value' => $model->course->course_name,
+    ),
+
 		'term',
 		'grade',
 		'credit',
 		'period',
 		'course_type',
-		'major_id',
+		array(
+      'name' => 'major_id',
+      'value' => $model->major->major_name,
+    ),
+
 		'site',
 	),
 )); ?>

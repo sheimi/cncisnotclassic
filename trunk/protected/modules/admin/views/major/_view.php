@@ -5,7 +5,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('dep_id')); ?>:</b>
-	<?php echo CHtml::encode($data->dep_id); ?>
+	<?php echo CHtml::encode($data->dep->dep_name); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('major_name')); ?>:</b>

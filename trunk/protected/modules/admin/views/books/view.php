@@ -16,7 +16,11 @@ $this->menu=array(
 		'book_id',
 		'book_name',
 		'isbn',
-		'provider',
+		array(
+      'name' => 'provider',
+      'value' => $model->providerdetail->username,
+    ),
+
 		'cover_path',
 		'add_time',
 		'author',

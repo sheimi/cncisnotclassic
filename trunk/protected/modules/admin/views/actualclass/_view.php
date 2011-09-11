@@ -5,7 +5,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('course_id')); ?>:</b>
-	<?php echo CHtml::encode($data->course_id); ?>
+	<?php echo CHtml::encode($data->course->course_name); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('term')); ?>:</b>
@@ -28,15 +28,14 @@
 	<?php echo CHtml::encode($data->course_type); ?>
 	<br />
 
-	<?php /*
+	
 	<b><?php echo CHtml::encode($data->getAttributeLabel('major_id')); ?>:</b>
-	<?php echo CHtml::encode($data->major_id); ?>
+	<?php echo CHtml::encode($data->major->major_name); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('site')); ?>:</b>
-	<?php echo CHtml::encode($data->site); ?>
+	<?php echo $data->site; ?>
 	<br />
 
-	*/ ?>
 
 </div>

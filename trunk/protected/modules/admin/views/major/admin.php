@@ -40,7 +40,10 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'filter'=>$model,
 	'columns'=>array(
 		'major_id',
-		'dep_id',
+    array(
+      'name' => 'dep_id',
+      'value' => '$data->dep->dep_name',
+    ),
 		'major_name',
 		array(
 			'class'=>'CButtonColumn',
