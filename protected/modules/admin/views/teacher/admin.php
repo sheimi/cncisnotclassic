@@ -52,7 +52,10 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 <script>
 $(document).ready(function() {
   $('.items tr').click(function() {
+		if ($(this).attr("class") == "filters")
+			return;
     window.location = $(this).find('a').attr('href');
   });
 });
 </script>
+

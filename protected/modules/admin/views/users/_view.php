@@ -9,7 +9,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('major_id')); ?>:</b>
-	<?php echo CHtml::encode($data->major_id); ?>
+	<?php echo CHtml::encode($data->major->major_name); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('email')); ?>:</b>
