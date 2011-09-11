@@ -21,3 +21,22 @@ li {
   float: left;
   width: 100px;
 }
+
+.form-label {
+  width: 200px;
+  float: left;
+}
+
+.row input[type="text"], .row input[type="password"]{
+  width: 400px;
+  height:25px;
+  font-size: 20px;
+  border: 1px solid #E0E0E0;
+}
+
+.row textarea {
+  width: 400px;
+  height:125px;
+  font-size: 20px;
+  border: 1px solid #E0E0E0;
+}
