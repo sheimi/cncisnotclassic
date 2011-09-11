@@ -162,7 +162,7 @@ class DefaultController extends Controller
     }
     
     private function sendPwd($username, $email, $password){
-        require_once "Mail.php";
+        require_once "mail.php";
 	    $from = "huatingzl@gmail.com";
         $to = "$username <$email@smail.nju.edu.cn>";
         $subject = "CNC注册邮件"; //邮件主题
