@@ -118,6 +118,8 @@ class DefaultController extends Controller
             }else{
                  $this->render('sendfinish', array('msg'=>$userModel->errors));
             }
+	    }else{
+	        $this->redirect(BU . "/members/default/register");
 	    }
     }
 
