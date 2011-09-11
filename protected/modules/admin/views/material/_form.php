@@ -10,14 +10,14 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'material_name'); ?>
+		<div class="form-label"><?php echo $form->labelEx($model,'material_name'); ?></div>
 		<?php echo $form->textField($model,'material_name',array('size'=>60,'maxlength'=>128)); ?>
 		<?php echo $form->error($model,'material_name'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'material_path'); ?>
-		<?php echo $form->textField($model,'material_path',array('size'=>60,'maxlength'=>255)); ?>
+		<div class="form-label"><?php echo $form->labelEx($model,'material_path'); ?>
+		<?php echo $form->textField($model,'material_path',array('size'=>60,'maxlength'=>255)); ?></div>
 		<?php echo $form->error($model,'material_path'); ?>
 	</div>
 

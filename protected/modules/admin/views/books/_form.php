@@ -10,61 +10,61 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'book_name'); ?>
+		<div class="form-label"><?php echo $form->labelEx($model,'book_name'); ?></div>
 		<?php echo $form->textField($model,'book_name',array('size'=>60,'maxlength'=>128)); ?>
 		<?php echo $form->error($model,'book_name'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'isbn'); ?>
+		<div class="form-label"><?php echo $form->labelEx($model,'isbn'); ?></div>
 		<?php echo $form->textField($model,'isbn',array('size'=>16,'maxlength'=>16)); ?>
 		<?php echo $form->error($model,'isbn'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'provider'); ?>
+		<div class="form-label"><?php echo $form->labelEx($model,'provider'); ?></div>
 		<?php echo $form->textField($model,'provider',array('size'=>10,'maxlength'=>10)); ?>
 		<?php echo $form->error($model,'provider'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'cover_path'); ?>
+		<div class="form-label"><?php echo $form->labelEx($model,'cover_path'); ?></div>
 		<?php echo $form->textField($model,'cover_path',array('size'=>60,'maxlength'=>128)); ?>
 		<?php echo $form->error($model,'cover_path'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'add_time'); ?>
+		<div class="form-label"><?php echo $form->labelEx($model,'add_time'); ?></div>
 		<?php echo $form->textField($model,'add_time'); ?>
 		<?php echo $form->error($model,'add_time'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'author'); ?>
+		<div class="form-label"><?php echo $form->labelEx($model,'author'); ?></div>
 		<?php echo $form->textField($model,'author',array('size'=>60,'maxlength'=>128)); ?>
 		<?php echo $form->error($model,'author'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'publisher'); ?>
+		<div class="form-label"><?php echo $form->labelEx($model,'publisher'); ?></div>
 		<?php echo $form->textField($model,'publisher',array('size'=>60,'maxlength'=>128)); ?>
 		<?php echo $form->error($model,'publisher'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'comment'); ?>
+		<div class="form-label"><?php echo $form->labelEx($model,'comment'); ?></div>
 		<?php echo $form->textField($model,'comment',array('size'=>60,'maxlength'=>255)); ?>
 		<?php echo $form->error($model,'comment'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'pubdate'); ?>
+		<div class="form-label"><?php echo $form->labelEx($model,'pubdate'); ?></div>
 		<?php echo $form->textField($model,'pubdate'); ?>
 		<?php echo $form->error($model,'pubdate'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'price'); ?>
+		<div class="form-label"><?php echo $form->labelEx($model,'price'); ?></div>
 		<?php echo $form->textField($model,'price',array('size'=>8,'maxlength'=>8)); ?>
 		<?php echo $form->error($model,'price'); ?>
 	</div>

@@ -10,13 +10,13 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'dep_id'); ?>
+		<div class="form-label"><?php echo $form->labelEx($model,'dep_id'); ?></div>
 		<?php echo $form->textField($model,'dep_id',array('size'=>5,'maxlength'=>5)); ?>
 		<?php echo $form->error($model,'dep_id'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'major_name'); ?>
+		<div class="form-label"><?php echo $form->labelEx($model,'major_name'); ?></div>
 		<?php echo $form->textField($model,'major_name',array('size'=>45,'maxlength'=>45)); ?>
 		<?php echo $form->error($model,'major_name'); ?>
 	</div>

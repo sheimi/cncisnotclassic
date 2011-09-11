@@ -10,19 +10,19 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'teacher_name'); ?>
+		<div class="form-label"><?php echo $form->labelEx($model,'teacher_name'); ?></div>
 		<?php echo $form->textField($model,'teacher_name',array('size'=>32,'maxlength'=>32)); ?>
 		<?php echo $form->error($model,'teacher_name'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'sex'); ?>
+		<div class="form-label"><?php echo $form->labelEx($model,'sex'); ?></div>
 		<?php echo $form->textField($model,'sex'); ?>
 		<?php echo $form->error($model,'sex'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'introduction'); ?>
+		<div class="form-label"><?php echo $form->labelEx($model,'introduction'); ?></div>
 		<?php echo $form->textArea($model,'introduction',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'introduction'); ?>
 	</div>
