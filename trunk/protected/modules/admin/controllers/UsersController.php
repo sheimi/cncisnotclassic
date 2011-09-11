@@ -11,6 +11,9 @@ class UsersController extends Controller
   public function init() {
     parent::init();
     Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl.'/css/admin.css');
+		Yii::app()->clientScript->scriptMap=array(
+    'jquery-1.5.1.js'=>false,
+		);
   }
 	/**
 	 * @return array action filters

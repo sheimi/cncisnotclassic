@@ -7,6 +7,15 @@ class MyclassController extends Controller
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
 	public $layout='//layouts/column3';
+	
+	public function init() {
+    parent::init();
+    Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl.'/css/admin.css');
+		Yii::app()->clientScript->scriptMap=array(
+    'jquery-1.5.1.js'=>false,
+		);
+  }
+	
 
 	/**
 	 * @return array action filters
