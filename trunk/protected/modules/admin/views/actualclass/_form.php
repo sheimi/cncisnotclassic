@@ -10,7 +10,7 @@
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
-		<div class="form-label"><?php echo $form->labelEx($model,'course_id'); ?></div>
+		<div class="form-label"><?php echo $form->labelEx($model,'course_id'); ?></div>s
 		<?php echo $form->textField($model,'course_id',array('size'=>10,'maxlength'=>10)); ?>
 		<?php echo $form->error($model,'course_id'); ?>
 	</div>
