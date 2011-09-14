@@ -25,8 +25,10 @@
     	<div class="content-box">
         	<?php foreach ($recommendBookList as $book){?>
         		<div class="book">
-        			<img title="<?php echo $book['book_name'];?>" src="<?php echo $book['image'];?>">
-        			<div  title="<?php echo $book['book_name'];?>" ><a href=""><?php echo $book['book_name'];?></a></div>
+        			<a href="<?php echo BU . "cs/books/viewbook&bid=" . $book['id'];?>">
+        				<img title="<?php echo $book['book_name'];?>" src="<?php echo $book['image'];?>">
+        			</a>
+        			<div  title="<?php echo $book['book_name'];?>" ><?php echo $book['book_name'];?></div>
         		</div>
         	<?php }?>
         	<div class="clear_float"></div>
