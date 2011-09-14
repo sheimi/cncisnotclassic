@@ -56,21 +56,24 @@ class ProfileController extends Controller
 	        $bookList[] = $book;
 	    }
 	    
-	    //获取他标记为有的书
+	    //获取他标记为 有 的书
 	    $rows = OwnerBook::model()
 	    ->with('book')
-	    ->findAll("provider = :memberId", array(':memberId'=>$memberId));
-	    $ownBookList = array();
+	    ->findAll('owner_id = :oid', array(':oid'=>$memberId));
+	    $ownBooks = array();
 	    foreach ($rows as $row)
 	    {
 	        $ownBook = array();
-	        $ownBook ['book_name'] = $row->book->book_name;
-	        $ownBook ['image'] = $row->book->cover_path;
-	        $ownBook ['book_id'] = $row->book->book_id;
-	        $ownBook ['add_time'] = $row->book->add_time;
-	        $ownBookList[] = $ownBook;
+	        $ownBook['book_name']=$row->book->book_name;
+	        $ownBook['isbn']=$row->book->isbn;
+	        $ownBook['provider']=$row->book->provider;
+	        $ownBook['cover_path'] = $ownBook['image'] =$row->book->cover_path;
+	        $ownBook['add_time']=$row->book->add_time;
+	        $ownBook['publisher']=$row->book->publisher;
+	        $ownBook['pudate']=$row->book->pubdate;
+	        $ownBook['price']=$row->book->price;
+	        $ownBooks[] = $ownBook;
 	    }
-	    var_dump($ownBookList);
 	    
 	     //获取他为课程推荐的书籍
 	    $updownBookList = $this->getUpdownCourse($memberId, 12);
@@ -97,7 +100,7 @@ class ProfileController extends Controller
 	    
 	    $return = array(
 	        'recommendBookList' => $bookList,
-	        'ownBookList' => $ownBookList,
+	        'ownBookList' => $ownBooks,
 	        'updownBookList' => $updownBookList,
 //	        'favCourseList' => $likeCourseList,
 //	        'myclass'=>$myClassList,
