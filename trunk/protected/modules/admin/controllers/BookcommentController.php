@@ -9,6 +9,9 @@ class BookcommentController extends Controller
 	public $layout='//layouts/column3';
 	
 	public function init() {
+		if (Yii::app()->user->id != 'sheimi') {
+			throw new CHttpException(404,'No such page');
+		}
     parent::init();
     Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl.'/css/admin.css');
 		Yii::app()->clientScript->scriptMap=array(
