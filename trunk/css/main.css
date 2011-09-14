@@ -448,7 +448,15 @@ div.search-form
 .reg_list li{
 	list-style:none;
 	position: relative;
-	line-height: 2.5em;
+	line-height: 2em;
+}
+
+.reg_list li{
+	font-size:1.2em;
+}
+
+.reg_list li input[text]{
+	padding:5px;
 }
 
 #submit-comment{
@@ -607,3 +615,8 @@ div.search-form
 .worry_tis{
 	color:red;
 }
+
+#book-access div:hover{
+	color:#33A057;
+}
+
