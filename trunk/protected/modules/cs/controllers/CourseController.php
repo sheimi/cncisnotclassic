@@ -206,8 +206,8 @@ array ('major' => array ('select' => 'major_id, major_name' ) ) )->findAll ( "co
 			$newBook ['book_name'] = $bookinfo ['title'];
 			$newBook ['isbn'] = $bookinfo ['isbn13'];
 			$newBook ['provider'] = $memberId;
-			$t = split('.',  $bookinfo['image']);
-		    $fileExt = $t[sizeof($t) - 1];
+			//$t = split('.',  $bookinfo['image']);
+		   // $fileExt = $t[sizeof($t) - 1];
 			// TODO 将图片保存到本地
 			
 //			function downloadFile($url, $savePath, $name = '')
