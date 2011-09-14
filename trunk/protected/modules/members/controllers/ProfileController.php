@@ -65,6 +65,7 @@ class ProfileController extends Controller
 	    {
 	        $ownBook = array();
 	        $ownBook['book_name']=$row->book->book_name;
+	        $ownBook['book_id']=$row->book->book_id;
 	        $ownBook['isbn']=$row->book->isbn;
 	        $ownBook['provider']=$row->book->provider;
 	        $ownBook['cover_path'] = $ownBook['image'] =$row->book->cover_path;

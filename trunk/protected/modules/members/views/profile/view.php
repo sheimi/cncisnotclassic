@@ -1,6 +1,6 @@
 <div id="viewprofile">
 	<div id="baseinfo">
-    	<div class="box-title"><?php echo Yii::app()->user->getState('username');?>j基本资料</div>
+    	<div class="box-title"><?php echo Yii::app()->user->getState('username');?>基本资料</div>
 		<div class="content-box">
     		<div>
     			<span>本站帐号：</span>
