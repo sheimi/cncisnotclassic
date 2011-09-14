@@ -58,10 +58,10 @@
         		<div class="content-box">
         			<?php foreach ($ownBookList as $book){?>
         				<div class="book">
-        					<a href="<?php echo Yii::app()->request->baseUrl . '/index.php?r=cs/books/viewbook&bid=' . $book['book_id'];?>">
-    						<img src="<?php echo $book['image'];?>">
+        					<a href="<?php echo BU . 'cs/books/viewbook&bid=' . $book['book_id'];?>">
+    							<img src="<?php echo $book['image'];?>">
     						</a>
-        						<?php echo $book['book_name']?>
+        					<?php echo $book['book_name']?>
         				</div>
         			<?php }?>
         			<div class="clear_float"></div>
