@@ -5580,3 +5580,64 @@ Stack trace:
 #13 D:\Workspace\php\cnc\framework\base\CApplication.php(155): CWebApplication->processRequest()
 #14 D:\Workspace\php\cnc\index.php(14): CApplication->run()
 #15 {main} REQUEST_URI=/cnc/index.php?r=members/default/login
+2011/09/11 03:18:59 [error] [exception.CException] exception 'CException' with message 'Alias "application.extensions.mailer.EMailer" is invalid. Make sure it points to an existing PHP file.' in D:\Workspace\php\cnc\framework\YiiBase.php:310
+Stack trace:
+#0 D:\Workspace\php\cnc\framework\YiiBase.php(190): YiiBase::import('application.ext...', true)
+#1 D:\Workspace\php\cnc\framework\base\CModule.php(371): YiiBase::createComponent(Array)
+#2 D:\Workspace\php\cnc\framework\base\CModule.php(86): CModule->getComponent('mailer')
+#3 D:\Workspace\php\cnc\protected\modules\members\controllers\DefaultController.php(165): CModule->__get('mailer')
+#4 D:\Workspace\php\cnc\protected\modules\members\controllers\DefaultController.php(105): DefaultController->sendPwd('jjjjjjj', 'b081251053', 'f5d568')
+#5 D:\Workspace\php\cnc\framework\web\actions\CInlineAction.php(57): DefaultController->actionNewuser()
+#6 D:\Workspace\php\cnc\framework\web\CController.php(300): CInlineAction->run()
+#7 D:\Workspace\php\cnc\framework\web\CController.php(278): CController->runAction(Object(CInlineAction))
+#8 D:\Workspace\php\cnc\framework\web\CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\Workspace\php\cnc\framework\web\CWebApplication.php(328): CController->run('newuser')
+#10 D:\Workspace\php\cnc\framework\web\CWebApplication.php(121): CWebApplication->runController('members/default...')
+#11 D:\Workspace\php\cnc\framework\base\CApplication.php(155): CWebApplication->processRequest()
+#12 D:\Workspace\php\cnc\index.php(14): CApplication->run()
+#13 {main} REQUEST_URI=/cnc/index.php?r=members/default/newuser
+2011/09/11 03:22:26 [error] [exception.CException] exception 'CException' with message 'Alias "application.extensions.mailer.EMailer" is invalid. Make sure it points to an existing PHP file.' in D:\Workspace\php\cnc\framework\YiiBase.php:310
+Stack trace:
+#0 D:\Workspace\php\cnc\framework\YiiBase.php(190): YiiBase::import('application.ext...', true)
+#1 D:\Workspace\php\cnc\framework\base\CModule.php(371): YiiBase::createComponent(Array)
+#2 D:\Workspace\php\cnc\framework\base\CModule.php(86): CModule->getComponent('mailer')
+#3 D:\Workspace\php\cnc\protected\modules\members\controllers\DefaultController.php(165): CModule->__get('mailer')
+#4 D:\Workspace\php\cnc\protected\modules\members\controllers\DefaultController.php(105): DefaultController->sendPwd('jjjjj', 'b081251053', '3751d0')
+#5 D:\Workspace\php\cnc\framework\web\actions\CInlineAction.php(57): DefaultController->actionNewuser()
+#6 D:\Workspace\php\cnc\framework\web\CController.php(300): CInlineAction->run()
+#7 D:\Workspace\php\cnc\framework\web\CController.php(278): CController->runAction(Object(CInlineAction))
+#8 D:\Workspace\php\cnc\framework\web\CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 D:\Workspace\php\cnc\framework\web\CWebApplication.php(328): CController->run('newuser')
+#10 D:\Workspace\php\cnc\framework\web\CWebApplication.php(121): CWebApplication->runController('members/default...')
+#11 D:\Workspace\php\cnc\framework\base\CApplication.php(155): CWebApplication->processRequest()
+#12 D:\Workspace\php\cnc\index.php(14): CApplication->run()
+#13 {main} REQUEST_URI=/cnc/index.php?r=members/default/newuser
+2011/09/11 03:22:51 [error] [exception.CException] exception 'CException' with message 'Property "DefaultController.email" is not defined.' in D:\Workspace\php\cnc\framework\base\CComponent.php:131
+Stack trace:
+#0 D:\Workspace\php\cnc\protected\modules\members\controllers\DefaultController.php(174): CComponent->__get('email')
+#1 D:\Workspace\php\cnc\protected\modules\members\controllers\DefaultController.php(105): DefaultController->sendPwd('jjjjj', 'b081251053', '66eea2')
+#2 D:\Workspace\php\cnc\framework\web\actions\CInlineAction.php(57): DefaultController->actionNewuser()
+#3 D:\Workspace\php\cnc\framework\web\CController.php(300): CInlineAction->run()
+#4 D:\Workspace\php\cnc\framework\web\CController.php(278): CController->runAction(Object(CInlineAction))
+#5 D:\Workspace\php\cnc\framework\web\CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#6 D:\Workspace\php\cnc\framework\web\CWebApplication.php(328): CController->run('newuser')
+#7 D:\Workspace\php\cnc\framework\web\CWebApplication.php(121): CWebApplication->runController('members/default...')
+#8 D:\Workspace\php\cnc\framework\base\CApplication.php(155): CWebApplication->processRequest()
+#9 D:\Workspace\php\cnc\index.php(14): CApplication->run()
+#10 {main} REQUEST_URI=/cnc/index.php?r=members/default/newuser
+2011/09/11 04:37:19 [error] [php] include(EMailer.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory (D:\Workspace\php\cnc\framework\YiiBase.php:395)
+Stack trace:
+#0 D:\Workspace\php\cnc\protected\modules\members\controllers\DefaultController.php(169): spl_autoload_call()
+#1 D:\Workspace\php\cnc\protected\modules\members\controllers\DefaultController.php(115): DefaultController->sendPwd()
+#2 D:\Workspace\php\cnc\framework\web\actions\CInlineAction.php(57): DefaultController->actionNewuser()
+#3 D:\Workspace\php\cnc\framework\web\CController.php(300): CInlineAction->run()
+#4 D:\Workspace\php\cnc\framework\web\CController.php(278): DefaultController->runAction()
+#5 D:\Workspace\php\cnc\framework\web\CController.php(257): DefaultController->runActionWithFilters()
+#6 D:\Workspace\php\cnc\framework\web\CWebApplication.php(328): DefaultController->run()
+#7 D:\Workspace\php\cnc\framework\web\CWebApplication.php(121): CWebApplication->runController()
+#8 D:\Workspace\php\cnc\framework\base\CApplication.php(155): CWebApplication->processRequest()
+#9 D:\Workspace\php\cnc\index.php(14): CWebApplication->run()
+REQUEST_URI=/cnc/index.php?r=members/default/newuser
+in D:\Workspace\php\cnc\protected\modules\members\controllers\DefaultController.php (169)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\DefaultController.php (115)
+in D:\Workspace\php\cnc\index.php (14)

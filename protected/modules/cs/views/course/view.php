@@ -45,6 +45,8 @@ $(function(){
 	    'transitionIn'   : 'elastic',
 	    'transitionOut'  : 'elastic',
 	    'overlayOpacity':0.2,
+	    'width'			: 560,
+	    'autoDimensions' : false,
 	    'href':'index.php?r=cs/course/addbook'
 	});
     
@@ -165,7 +167,7 @@ $(function(){
         		 	<span  bookid="<?php echo $book['book_id'];?>" cbid="<?php echo $book['cb_id'];?>" class="down">&nbsp;&nbsp;</span>
         		 	<span><?php echo $book['book_name'];?></span>
         		 </div>
-        		 <div>作者: <?php echo $book['provider_name'];?></div>
+        		 <div>作者: <?php echo $book['author'];?></div>
         		 <div>出版社：<span class=""><?php echo $book['publisher'];?></span></div>
             	 <div>出版时间：<span class=""><?php echo $book['pubdate'];?></span></div>
         		 <div>推荐者: <?php echo $book['provider_name'];?></div>

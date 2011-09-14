@@ -138,6 +138,7 @@ array ('major' => array ('select' => 'major_id, major_name' ) ) )->findAll ( "co
 			$book ['book_name'] = $row ['book_name'];
 			$book ['publisher'] = $row ['publisher'];
 			$book ['pubdate'] = $row ['pubdate'];
+			$book ['author'] = $row ['author'];
 			
 			$book ['cover_path'] = $book ['image'] = $row ['cover_path'];
 			$book ['up_total'] = $row ['up_total'];
