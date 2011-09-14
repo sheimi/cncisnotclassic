@@ -5641,3 +5641,17 @@ REQUEST_URI=/cnc/index.php?r=members/default/newuser
 in D:\Workspace\php\cnc\protected\modules\members\controllers\DefaultController.php (169)
 in D:\Workspace\php\cnc\protected\modules\members\controllers\DefaultController.php (115)
 in D:\Workspace\php\cnc\index.php (14)
+2011/09/14 08:37:37 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in D:\Workspace\php\cnc\framework\web\auth\CAccessControlFilter.php:157
+Stack trace:
+#0 D:\Workspace\php\cnc\framework\web\auth\CAccessControlFilter.php(119): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 D:\Workspace\php\cnc\framework\web\filters\CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 D:\Workspace\php\cnc\framework\web\CController.php(1088): CFilter->filter(Object(CFilterChain))
+#3 D:\Workspace\php\cnc\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 D:\Workspace\php\cnc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\Workspace\php\cnc\framework\web\CController.php(283): CFilterChain->run()
+#6 D:\Workspace\php\cnc\framework\web\CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\Workspace\php\cnc\framework\web\CWebApplication.php(328): CController->run('admin')
+#8 D:\Workspace\php\cnc\framework\web\CWebApplication.php(121): CWebApplication->runController('admin/users/adm...')
+#9 D:\Workspace\php\cnc\framework\base\CApplication.php(155): CWebApplication->processRequest()
+#10 D:\Workspace\php\cnc\index.php(14): CApplication->run()
+#11 {main} REQUEST_URI=/cnc/index.php?r=admin/users/admin

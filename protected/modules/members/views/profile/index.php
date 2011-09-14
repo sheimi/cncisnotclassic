@@ -33,7 +33,7 @@
         				</tr>
         				<tr>
         					<td>邮箱</td>
-        					<td><?php echo $userInfo['email'];?></td>
+        					<td><?php echo $userInfo['email'];?>@smail.nju.edu.cn</td>
         				</tr>
         			</table>
         		</div>
