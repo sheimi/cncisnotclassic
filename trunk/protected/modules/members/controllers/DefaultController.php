@@ -102,7 +102,6 @@ class DefaultController extends Controller
 	        }
 	        
             $userpassword = $this->get_password();
-            $this->sendPwd($username, $email, $userpassword);
             $attributes = array(
     	    	'major_id'=>$major,
     	    	'email'=>$email,
@@ -113,10 +112,14 @@ class DefaultController extends Controller
     	    
             $userModel = new Users;
             $userModel->attributes = $attributes;
-            if($userModel->save()){
-                $this->render('sendfinish', array('msg'=>'邮件发送完成<a href="http://smail.nju.edu.cn">到邮箱查看密码</a>'));
+            if($return = $this->sendPwd($username, $email, $userpassword)){
+                if($userModel->save()){
+                    $this->render('sendfinish', array('msg'=>'邮件发送完成<a href="http://smail.nju.edu.cn">到邮箱查看密码</a>'));
+                }else{
+                    $this->render('sendfinish', array('msg'=>$userModel->errors));
+                }
             }else{
-                 $this->render('sendfinish', array('msg'=>$userModel->errors));
+                $this->render('sendfinish', array('msg'=>$return));
             }
 	    }else{
 	        $this->redirect(BU . "/members/default/register");
@@ -162,43 +165,64 @@ class DefaultController extends Controller
     }
     
     private function sendPwd($username, $email, $password){
-        require_once "mail.php";
-	    $from = "huatingzl@gmail.com";
-        $to = "$username <$email@smail.nju.edu.cn>";
-        $subject = "CNC注册邮件"; //邮件主题
-        $body = "您好，感谢您注册CNC，您的密码是：$password"; //邮件内容
-         
-        $host = "smtp.gmail.com";
-        $username = "huatingzl"; //gmail用户名
-        $password = "huating8232828"; //gmail密码
-        
-        $subject = "=?UTF-8?B?".base64_encode($subject)."?=";
-        
-        $headers = array (
-            'MIME-Version'=>'1.0',
-            'From' => $from,
-            'To' => $to,
-            'Subject' => $subject,
-            'Content-Type'=>'text/plain; charset=UTF-8',
-        );
-        
-        
-        $smtp = Mail::factory(
-            'smtp',
-            array (
-            'host' => $host,
-            'auth' => true,
-            'username' => $username,
-            'password' => $password
-            )
-        );
-        
-        $mail = $smtp->send($to, $headers, $body);
-        if (PEAR::isError($mail)) {
-            return $mail->getMessage();
-        } else {
-            return true;
+        $mailer = Yii::createComponent('application.extensions.mailer.EMailer');
+        $mailer->Host = 'smtp.163.com';
+        $mailer->IsSMTP();
+        $mailer->SMTPAuth = true;
+        $mailer->From = 'njulilyadmin@163.com';
+        $mailer->AddReplyTo('njulilyadmin@163.com');
+        $mailer->AddAddress("$email@smail.nju.edu.cn");
+        $mailer->FromName = 'njulilyadmin';
+        $mailer->Username = 'njulilyadmin';    //这里输入发件地址的用户名
+        $mailer->Password = 'llstudio@NJU109';    //这里输入发件地址的密码
+//        $mailer->SMTPDebug = true;   //设置SMTPDebug为true，就可以打开Debug功能，根据提示去修改配置
+        $mailer->CharSet = 'UTF-8';
+        $mailer->Subject = Yii::t('demo', 'CNC注册邮件');
+        $message = "感谢您注册CNC, 您的登录密码为：$password";
+        $mailer->Body = $message;
+        if ($mailer->Send()) {
+        	return true;
+        }else{
+        	return $mailer->errors;
         }
+//        require_once "mail.php";
+//	    $from = "huatingzl@gmail.com";
+//        $to = "$username <$email@smail.nju.edu.cn>";
+//        $subject = "CNC注册邮件"; //邮件主题
+//        $body = "您好，感谢您注册CNC，您的密码是：$password"; //邮件内容
+//         
+//        $host = "smtp.gmail.com";
+//        $username = "huatingzl"; //gmail用户名
+//        $password = "huating8232828"; //gmail密码
+//        
+//        $subject = "=?UTF-8?B?".base64_encode($subject)."?=";
+//        
+//        $headers = array (
+//            'MIME-Version'=>'1.0',
+//            'From' => $from,
+//            'To' => $to,
+//            'Subject' => $subject,
+//            'Content-Type'=>'text/plain; charset=UTF-8',
+//        );
+//        
+//        
+//        $smtp = Mail::factory(
+//            'smtp',
+//            array (
+//            'host' => $host,
+//            'auth' => true,
+//            'username' => $username,
+//            'password' => $password
+//            )
+//        );
+//        
+//        $mail = $smtp->send($to, $headers, $body);
+//        if (PEAR::isError($mail)) {
+//            return $mail->getMessage();
+//        } else {
+//            return true;
+//        }
+        
     }
     public function actionCheckusername($username)
     {

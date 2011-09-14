@@ -70,6 +70,11 @@ return array(
 				*/
 			),
 		),
+		'mailer' => array(
+            'class' => 'application.extensions.mailer.EMailer',
+            'pathViews' => 'application.views.email',
+            'pathLayouts' => 'application.views.email.layouts'
+        ),
 	),
 
 	// application-level parameters that can be accessed
