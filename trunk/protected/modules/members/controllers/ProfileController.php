@@ -70,6 +70,8 @@ class ProfileController extends Controller
 	        $ownBook ['add_time'] = $row->book->add_time;
 	        $ownBookList[] = $ownBook;
 	    }
+	    var_dump($ownBookList);
+	    
 	     //获取他为课程推荐的书籍
 	    $updownBookList = $this->getUpdownCourse($memberId, 12);
 	    

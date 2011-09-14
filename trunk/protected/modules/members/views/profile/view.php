@@ -14,7 +14,7 @@
     		
     		<div>
     			<span>邮箱：</span>
-    			<span><a href="mailto"><?php echo $userInfo['email']; ?>@smail.nju.edu.cn</a></span>
+    			<span><?php echo $userInfo['email']; ?>@smail.nju.edu.cn</span>
     		</div>
 		</div>
 	</div>
