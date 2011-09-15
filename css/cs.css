@@ -567,7 +567,7 @@
 
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active{
 	border: 1px solid #E6E5E5;
-	background:#E6E5E5;
+	background:#F6F5F5;
 }
 
 #profileindex .book, #recommendbooks .book{

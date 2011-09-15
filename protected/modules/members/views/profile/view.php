@@ -1,6 +1,6 @@
 <div id="viewprofile">
 	<div id="baseinfo">
-    	<div class="box-title"><?php echo Yii::app()->user->getState('username');?>基本资料</div>
+    	<div class="box-title"><?php echo $userInfo['username']; ?>基本资料</div>
 		<div class="content-box">
     		<div>
     			<span>本站帐号：</span>
@@ -21,7 +21,7 @@
 	
     <!-- 他推荐的书 -->
     <div id="ownbook">
-    	<div class="box-title"><?php echo Yii::app()->user->getState('username');?>推荐过的书</div>
+    	<div class="box-title"><?php echo $userInfo['username']; ?>推荐过的书</div>
     	<div class="content-box">
         	<?php foreach ($recommendBookList as $book){?>
         		<div class="book">

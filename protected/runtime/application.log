@@ -5655,3 +5655,99 @@ Stack trace:
 #9 D:\Workspace\php\cnc\framework\base\CApplication.php(155): CWebApplication->processRequest()
 #10 D:\Workspace\php\cnc\index.php(14): CApplication->run()
 #11 {main} REQUEST_URI=/cnc/index.php?r=admin/users/admin
+2011/09/15 05:50:39 [warning] [application] Failed to set unsafe attribute "campus".
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (290)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (321)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (179)
+2011/09/15 05:50:39 [warning] [application] Failed to set unsafe attribute "campus".
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (290)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (321)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (179)
+2011/09/15 05:50:39 [warning] [application] Failed to set unsafe attribute "campus".
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (290)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (321)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (179)
+2011/09/15 05:50:39 [warning] [application] Failed to set unsafe attribute "campus".
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (290)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (321)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (179)
+2011/09/15 05:50:39 [warning] [application] Failed to set unsafe attribute "campus".
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (290)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (321)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (179)
+2011/09/15 05:50:39 [warning] [application] Failed to set unsafe attribute "campus".
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (290)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (321)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (179)
+2011/09/15 05:50:39 [warning] [application] Failed to set unsafe attribute "campus".
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (290)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (321)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (179)
+2011/09/15 05:50:39 [warning] [application] Failed to set unsafe attribute "campus".
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (290)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (321)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (179)
+2011/09/15 05:50:39 [warning] [application] Failed to set unsafe attribute "campus".
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (290)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (321)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (179)
+2011/09/15 05:50:39 [warning] [application] Failed to set unsafe attribute "campus".
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (290)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (321)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (179)
+2011/09/15 05:50:39 [warning] [application] Failed to set unsafe attribute "campus".
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (290)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (321)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (179)
+2011/09/15 05:50:39 [warning] [application] Failed to set unsafe attribute "campus".
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (290)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (321)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (179)
+2011/09/15 05:50:39 [warning] [application] Failed to set unsafe attribute "campus".
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (290)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (321)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (179)
+2011/09/15 05:50:39 [warning] [application] Failed to set unsafe attribute "campus".
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (290)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (321)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (179)
+2011/09/15 05:50:39 [warning] [application] Failed to set unsafe attribute "campus".
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (290)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (321)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (179)
+2011/09/15 05:50:39 [warning] [application] Failed to set unsafe attribute "campus".
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (290)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (321)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (179)
+2011/09/15 05:50:39 [warning] [application] Failed to set unsafe attribute "campus".
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (290)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (321)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (179)
+2011/09/15 05:50:39 [warning] [application] Failed to set unsafe attribute "campus".
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (290)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (321)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (179)
+2011/09/15 05:50:39 [warning] [application] Failed to set unsafe attribute "campus".
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (290)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (321)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (179)
+2011/09/15 05:50:39 [warning] [application] Failed to set unsafe attribute "campus".
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (290)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (321)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (179)
+2011/09/15 05:50:39 [warning] [application] Failed to set unsafe attribute "campus".
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (290)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (321)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (179)
+2011/09/15 05:50:39 [warning] [application] Failed to set unsafe attribute "campus".
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (290)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (321)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (179)
+2011/09/15 05:50:39 [warning] [application] Failed to set unsafe attribute "campus".
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (290)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (321)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (179)
+2011/09/15 05:50:39 [warning] [application] Failed to set unsafe attribute "campus".
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (290)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (321)
+in D:\Workspace\php\cnc\protected\modules\members\controllers\ProfileController.php (179)

@@ -5,6 +5,7 @@
     	<!-- <div class="more-detail"><a href="">书籍详情</a></div>  -->
 	</div>
 	<div>
+		<?php if(sizeof($book['relcourse'])){?>
 		<div class="rel-course">
 			<h6>相关课程</h6>
 			<?php foreach ($book['relcourse'] as $relCourse){?>
@@ -12,6 +13,8 @@
 			<?php }?>
 			<div class="clear_float"></div>
 		</div>
+		<?php }?>
+		<?php if(sizeof($book['ownerList']) > 0){?>
 		<div class="have-book">
     		<h6>有此书的Njuer</h6>
     		<?php foreach ($book['ownerList'] as $owner){?>
@@ -26,6 +29,7 @@
     			</span>
     		<?php }?>
 		</div>
+		<?php }?>
 	</div>
 </div>
 <?php }else{?>

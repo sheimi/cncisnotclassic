@@ -11,16 +11,13 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection" />
 	<![endif]-->
 
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/jquery-ui-1.8.11.custom.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/jquery-ui-1.8.11.custom.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/cs.css" />
 	
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/autocomplete.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/js/autocomplete/jquery.autocomplete.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/js/autocomplete/lib/thickbox.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/js/fancybox/jquery.fancybox-1.3.4.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/js/jrating_v2.1/jquery/jRating.jquery.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/js/toastmessage/resources/css/jquery.toastmessage.css" />
 	
 	<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl.'/js/jquery-1.5.1.js');?>
@@ -44,12 +41,6 @@
    		var BASE_URL = "<?php echo Yii::app()->request->baseUrl;?>";
     //-->
     </script>
-	<style type="text/css">
-		.clear_float{
-			width:100%;
-			clear:both;
-		}
-	</style>
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
@@ -63,8 +54,8 @@
 	<div id="mainmenu">
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
-				array('label'=>'首页', 'url'=>array('/default/default')),
-				array('label'=>'个人中心', 'url'=>array('/members/profile')),
+				array('label'=>'首页', 'url'=>array('/cs/default/index')),
+				array('label'=>'个人中心', 'url'=>array('/members/profile/index')),
 				array('label'=>'关于我们', 'url'=>array('/default/site/about')),
 				array('label'=>'项目反馈', 'url'=>array('/default/site/feedback')),
 				array('label'=>'登录', 'url'=>array('/members/default/login'), 'visible'=>Yii::app()->user->isGuest),
@@ -81,12 +72,25 @@
 
 	<div class="clear_float"></div>
 	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by <a>LilyStudio</a>.<br/>
-		All Rights Reserved.<br/>
-		<?php echo 'LilyStudio'; ?>
+		<div id="footer-body">
+			<div id="other-proj">
+				<ul>
+					<li><a href="http://www.lilystudio.org">小百合工作室主页</a></li>
+					<li><a href="http://classic.njuer.us/">ClassIC</a></li>
+					<li><a href="http://lib.lilystudio.org/">手机图书馆</a></li>
+					<li><a href="http://blog.njulily.com">百合有聊</a></li>
+				</ul>
+			</div>
+			<div id="copyright">
+        		Copyright &copy; <?php echo date('Y'); ?> by <a>LilyStudio</a>. All Rights Reserved.
+			</div>
+			<div class="clear_float"></div>
+			
+		</div>
 	</div><!-- footer -->
 
-</div><!-- page -->
+</div>
+<!-- page -->
 
 </body>
 </html>
