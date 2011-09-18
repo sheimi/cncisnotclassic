@@ -207,9 +207,48 @@ class ProfileController extends Controller
 	        $book['add_time'] = $row->add_time;
 	        $bookList[] = $book;
 	    }
-	    
 	    $this->render('recommendbooks', array('recommendBookList'=>$bookList));
 	}
+	
+    public function actionChangepswform(){
+        $this->renderPartial('changepswform');
+    }
+    
+    public function actionSavenewpsw(){
+        $oldpsw = $_POST['oldpsw'];
+        $newpsw = $_POST['newpsw'];
+        $newconfirm = $_POST['newconfirm'];
+        
+        if( $newpsw != $newconfirm ){
+            echo '两次输入的新密码不匹配';
+            Yii::app()->end();
+        }
+        
+        
+        $username = Yii::app()->user->getState('username');
+        $rows = Users::model()
+        ->findAll('username=:username AND password=:password', 
+        array(':username'=>$username, ':password'=>md5($oldpsw)));
+        if(sizeof($rows) == 0){
+           echo '原密码错误'; 
+           Yii::app()->end();
+        }
+        
+        if($newpsw == $oldpsw)
+        {
+            echo '输入的新旧密码相同';
+            Yii::app()->end();
+        }
+        
+        $userModel = new Users();
+        $attributes = array(
+            'password'=>md5($newpsw),
+        );
+        
+        if($userModel->updateByPk(Yii::app()->user->getState('user_id'), $attributes)){
+            echo '修改密码成功';
+        }
+    }
 	
 	public function actionOwnbook()
 	{

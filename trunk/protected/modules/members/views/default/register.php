@@ -1,4 +1,4 @@
-<div id="content-left">
+<div id="register-content">
     <h1>注册新用户</h1>
     <script type="text/javascript">
     	var validEmail, validUsername, validMajor;
@@ -52,7 +52,7 @@
 						success:function(data, status){
 							var majorList = $.parseJSON(data);
 							$('#majors').html('');
-							$('#majors').append('<option>请选择</option>');
+							$('#majors').append('<option value="-1">请选择</option>');
 							for (i in majorList){
 								$('#majors').append('<option  value="' + majorList[i]['id'] + '">' + majorList[i]['name'] + '</option>');
 							}
@@ -80,24 +80,30 @@
 					return false;
 				}
 
+				if($('#invite').val() == '' || $('#invite').val() == null)
+				{
+					$('#inviteErr').html('暂时只开放邀请注册，请输入邀请码');
+					return false;
+				}
 				return true;
 			});
 		});
     </script>
     <form action="index.php?r=members/default/newuser" method="post">
     <ul class="reg_list">
-    	<li class="email"><span class="lf">学校邮箱：</span> <input
-    		id="email" name="email" type="text" class="text"
+    	<li class="email">
+    		<label class="lf">学校邮箱：</label> 
+    		<input id="email" name="email" type="text" class="text"
     		value="">@smail.nju.edu.cn &nbsp;&nbsp;&nbsp;&nbsp;<span id="emailErr" class="worry_tis"></span></li>
     	
-    	<li class="username"><span class="lf">昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称：</span>
+    	<li class="username"><label class="lf">昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称：</label>
     		<input id="username" name="username" type="text" maxlength="32"
-    		class="text" value=""> <span id="usernameRule" class="tis">请输入1-20位数字、字母和中文</span>
-    		 &nbsp;&nbsp;&nbsp;&nbsp;<span class="error"  id="usernameErr" class="worry_tis"></span>
+    		class="text" value=""> <span id="usernameRule" class="tis">请输入1-20位数字、字母</span>
+    		 &nbsp;&nbsp;&nbsp;&nbsp;<span id="usernameErr" class="worry_tis"></span>
     	</li>
     	
-    	<li id="grade" class="worry_tis"></li>
-    	<li class="grade"><span class="lf">入学时间：</span>
+    	<li class="grade">
+    		<label class="lf">入学时间：</label>
 			<select name="grade">
 				<?php for ($year = 2000; $year <= date('Y'); $year++){?>
 				<option value="<?php echo $year;?>"><?php echo $year;?></option>
@@ -105,9 +111,9 @@
 			</select>
 		</li>
     		
-    	<li id="passwordErr" class="worry_tis"></li>
-    	<li class="major"><span class="lf">专&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业：</span> 
-    		<select id="deps" name="dep">
+    	<li class="major">
+    		<label class="lf">专&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业：</label> 
+			<select id="deps" name="dep">
 			<option value="-1">请选择</option>
     		<?php foreach($depList as $dep){?>
     			<option value="<?php echo $dep['dep_id'];?>"><?php echo $dep['dep_name'];?></option>
@@ -117,14 +123,16 @@
     		<select id="majors" name="major">
     			<option value='-1'>请选择</option>
     		</select>
-    		&nbsp;&nbsp;&nbsp;&nbsp;<span class="error" id="majorError" class="worry_tis"></span>
+    		<span id="majorError" class="worry_tis"></span>
     	</li>
-    	<li id="majorErr" class="worry_tis"></li>
+    	<li class="invite"><label class="lf">邀请码：</label>
+    		<input id="invite" name="invite" type="text" maxlength="32"
+    		class="text" value=""> <span id="inviteRule" class="tis">请输入邀请码</span>
+    		 &nbsp;&nbsp;&nbsp;&nbsp;<span id="inviteErr" class="worry_tis"></span>
+    	</li>
     	<li class="btn">
-    	<dl>
-    		<dd><input id="registerSubmit" name="registerSubmit" type="submit"
-    			value="发送注册邮件" class="reg_btn"></dd>
-    	</dl>
+    		<input id="registerSubmit" name="registerSubmit" type="submit"
+    			value="发送注册邮件" class="reg_btn cnc-button">
     	</li>
     </ul>
     </form>

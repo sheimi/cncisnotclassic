@@ -76,8 +76,28 @@ class DefaultController extends Controller
 	    $grade = $_POST['grade'];
 	    $major = $_POST['major'];
 	    
-	    if(isset($email) && isset($username) && isset($grade) && isset($major))
+	    $invite = $_POST['invite'];
+	    
+	    
+	    if(isset($email) && isset($username) && isset($grade) && isset($major) && isset($invite))
 	    {
+	        
+	        // 邀请码里面有l i l y 四个字母同时出现即可(顺序不限)
+    	    if(!(strpos('x'.$invite, 'l') > 0
+    	     && strpos('x'.$invite, 'i') > 0
+    	     && strpos('x'.$invite, 'y')> 0
+    	     && strlen($invite) > 4
+    	     && strlen($invite) <= 8)){
+    	         $this->render('sendfinish', array('msg'=>'此邀请码不存在'));
+    	         Yii::app()->end();
+    	    }else{
+    	         $rows = Invite::model()->findAll('invite=:invite', array(":invite"=>$invite));
+    	         if(sizeof($rows) > 0){
+        	        $this->render('sendfinish', array('msg'=>'该邀请码已经使用过，不能再次使用'));
+        	         Yii::app()->end();
+    	         }
+    	    }
+    	    
 	        $row1 = Users::model()->findByAttributes(array(
 	            'username'=>$username
 	        ));
@@ -115,6 +135,9 @@ class DefaultController extends Controller
             if($return = $this->sendPwd($username, $email, $userpassword)){
                 if($userModel->save()){
                     $this->render('sendfinish', array('msg'=>'邮件发送完成<a href="http://smail.nju.edu.cn">到邮箱查看密码</a>'));
+                    $inviteModel = new Invite();
+                    $inviteModel->attributes = array('invite'=>$invite);
+                    $inviteModel->save();
                 }else{
                     $this->render('sendfinish', array('msg'=>$userModel->errors));
                 }
