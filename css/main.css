@@ -350,9 +350,10 @@ div.search-form
 
 .notice{
 	float:left;
-	margin-left:40px;
 	margin-top:40px;
 	height:420px;
+	width:500px;
+	background:url(../images/loginbg.png)
 }
 #content-left .search-box input[type=text]{
 	width:500px;

@@ -38,13 +38,6 @@
     
 </div>
 <div class="notice" style="float:left;">
-	<div class="side-box">
-		<div class="title">系统公告</div>
-		dsafdsdsafdsdsafdsdsafdsdsafdsdsafds<br>
-		ddsafdsdsafdsdsafdsdsafdssafds<br>
-		dsdsafdsdsafdsdsafdsdsafdsdsafdsdsafdsafds<br>
-		dsdsafdsdsafdsdsafdsdsafdsafds<br>
-		dsdsafdsdsafdsdsafdsdsafdsdsafdsafds<br>
-	</div>
+	&nbsp;
 </div>
 </div>

@@ -208,44 +208,6 @@ class DefaultController extends Controller
         }else{
         	return $mailer->errors;
         }
-//        require_once "mail.php";
-//	    $from = "huatingzl@gmail.com";
-//        $to = "$username <$email@smail.nju.edu.cn>";
-//        $subject = "CNC注册邮件"; //邮件主题
-//        $body = "您好，感谢您注册CNC，您的密码是：$password"; //邮件内容
-//         
-//        $host = "smtp.gmail.com";
-//        $username = "huatingzl"; //gmail用户名
-//        $password = "huating8232828"; //gmail密码
-//        
-//        $subject = "=?UTF-8?B?".base64_encode($subject)."?=";
-//        
-//        $headers = array (
-//            'MIME-Version'=>'1.0',
-//            'From' => $from,
-//            'To' => $to,
-//            'Subject' => $subject,
-//            'Content-Type'=>'text/plain; charset=UTF-8',
-//        );
-//        
-//        
-//        $smtp = Mail::factory(
-//            'smtp',
-//            array (
-//            'host' => $host,
-//            'auth' => true,
-//            'username' => $username,
-//            'password' => $password
-//            )
-//        );
-//        
-//        $mail = $smtp->send($to, $headers, $body);
-//        if (PEAR::isError($mail)) {
-//            return $mail->getMessage();
-//        } else {
-//            return true;
-//        }
-        
     }
     public function actionCheckusername($username)
     {
