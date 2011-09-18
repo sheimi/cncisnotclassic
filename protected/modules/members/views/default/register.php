@@ -94,8 +94,8 @@
     	<li class="email">
     		<label class="lf">学校邮箱：</label> 
     		<input id="email" name="email" type="text" class="text"
-    		value="">@smail.nju.edu.cn &nbsp;&nbsp;&nbsp;&nbsp;<span id="emailErr" class="worry_tis"></span></li>
-    	
+    		value="">@smail.nju.edu.cn &nbsp;&nbsp;<span id="emailErr" class="worry_tis"></span></li>
+    	<li style="color:#aaa; ">@smail.nju.edu.cn的邮箱为南京大学邮箱，帐户名为b加上学号，密码默认为身份证号</li>
     	<li class="username"><label class="lf">昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称：</label>
     		<input id="username" name="username" type="text" maxlength="32"
     		class="text" value=""> <span id="usernameRule" class="tis">请输入1-20位数字、字母</span>
