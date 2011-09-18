@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'CNC',
+	'name'=>'看课',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -81,7 +81,7 @@ return array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
+		'adminEmail'=>'huatingzl@gmail.com',
 	),
 	
 	'import'=>array(
@@ -90,10 +90,12 @@ return array(
     ),
  
     'modules'=>array(
+        /**
         'gii'=>array(
             'class'=>'system.gii.GiiModule',
             'password'=>'j',
         ),
+        */
         'cs',
         'members',
         'default',
