@@ -94,7 +94,6 @@ array ('major' => array ('select' => 'major_id, major_name' ) ) )->findAll ( "co
 		$relBookNum = 10;
 		$booksList = $this->getRelBook ( $courseId, $relBookNum );
 		
-		//获取当前用户对这本书的评分和其他用户对这本书的评分
 		$row = LikeCourse::model ()->findByAttributes ( array ('member_id' => $memberId, 'course_id' => $courseId ) );
 		if ($row)
 		{
@@ -122,6 +121,7 @@ array ('major' => array ('select' => 'major_id, major_name' ) ) )->findAll ( "co
 		$sql .= "WHERE cb.`course_id` = '$courseId' ";
 		$sql .= "GROUP BY cb.`book_id` ";
 		$sql .= "ORDER BY up_total DESC ";
+		$sql .= ", cb.c_b_id DESC ";
 		$sql .= "LIMIT $num";
 		
 		$db = Yii::app ()->db;
