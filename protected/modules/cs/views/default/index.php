@@ -2,7 +2,7 @@
     <?php //echo $this->renderPartial('../search-box', array('model'=>$model)); ?>
     <script type="text/javascript">
     	$(function(){
-        	var promptStr = '搜索课本、院系课程、教师';
+        	var promptStr = '搜索课本、课程、教师';
 			$('#keyword').bind('focus', function(){
 				if(promptStr == $(this).val()){
     				$(this).val("");
@@ -20,7 +20,7 @@
     <div class="search-box">
     	<form>
     		<input type="hidden" name='r' value="cs/search/all" />
-        	<input id="keyword" name='q' type="text" value="搜索课本、院系课程、教师">
+        	<input id="keyword" name='q' type="text" value="搜索课本、课程、教师">
         	<input class="cnc-button" type="submit" value="搜索" />
     	</form>
     </div>

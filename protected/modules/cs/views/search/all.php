@@ -3,7 +3,7 @@
     <script type="text/javascript">
     	$(function(){
         	var q = '<?php echo $q; ?>';
-        	var promptStr = '搜索课本、院系课程、教师';
+        	var promptStr = '搜索课本、课程、教师';
 			$('#keyword').bind('focus', function(){
 				if(promptStr == $(this).val()){
     				$(this).val("");
@@ -37,8 +37,8 @@
     <div class="search-box">
     	<form>
     		<input type="hidden" name='r' value="cs/search/all" />
-        	<input id="keyword" name='q' type="text" <?php if(isset($q)){?>class="activeinput"<?php }?> value="<?php echo  isset($q)?$q:'搜索课本、院系课程、教师';?>">
-        	<input type="submit" value="搜索" />
+        	<input id="keyword" name='q' type="text" <?php if(isset($q)){?>class="activeinput"<?php }?> value="<?php echo  isset($q)?$q:'搜索课本、课程、教师';?>">
+        	<input class="cnc-button" type="submit" value="搜索" />
     	</form>
     </div>
     

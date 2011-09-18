@@ -1,7 +1,7 @@
 <div id="content">
 <div id="login">
     <div class="form">
-    	<h1>XXX系统登录</h1>
+    	<h1>看课登录</h1>
         <?php $form=$this->beginWidget('CActiveForm', array(
         	'id'=>'login-form-login-form',
         	'enableAjaxValidation'=>false,
@@ -21,7 +21,7 @@
     	</div>
     
     	<div class="row">
-        		<?php echo CHtml::submitButton('Submit', array('class'=>'cnc-button', 'id'=>'loginbtn')); ?>
+        		<?php echo CHtml::submitButton('登录', array('class'=>'cnc-button', 'id'=>'loginbtn')); ?>
     	</div>
     	
     	<div class="row remember">

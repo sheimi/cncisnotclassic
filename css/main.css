@@ -480,7 +480,9 @@ div.search-form
 	float:left;
 	width:20px;
 }
-
+#register-content{
+	padding:30px;
+}
 .up:hover, .down:hover{
 	cursor: pointer;
 }
@@ -493,6 +495,15 @@ div.search-form
 
 .reg_list li{
 	font-size:1.2em;
+	display:block;
+	clear:both;
+}
+.reg_list li select{
+	font-size:1.2em;
+}
+.reg_list li label, .lf{
+	float:left;
+	width:150px;
 }
 
 .reg_list li input[text]{
@@ -519,11 +530,16 @@ div.search-form
 	background: #33A057;
 	border: 1px solid #2F7B4B;
 	color: white;
-	padding: 0 10px;
+	cursor:pointer;
+	padding: 3px 10px;
 	-moz-border-radius: 4px;
 	-khtml-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	margin-right: 10px;
+}
+
+.cnc-button:hover{
+	background: #43B067;
 }
 
 .cnc-button a{
