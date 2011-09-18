@@ -51,7 +51,7 @@ $(function(){
 	});
     
 	$(".likeit").live('click', function(event){
-        //关注一门课程
+        //喜欢一门课程
         var courseId = cid;
     	$.ajax({
         	url:"<?php echo Yii::app()->request->baseUrl . '/index.php?r=members/likecourse/add'?>",
@@ -61,7 +61,7 @@ $(function(){
         	},
 			success:function(data, status){
         		$(".likeit").addClass('liked');
-    			$(".likeit a").text('已关注');
+    			$(".likeit a").text('已喜欢');
     			$(".likeit").unbind('click');
         		$(".likeit").removeClass('likeit');
 
@@ -71,7 +71,7 @@ $(function(){
     });
 
 	$('.liked').live('click', function(){
-		//取下关注一门课程
+		//取消喜欢一门课程
         var courseId = cid;
     	$.ajax({
         	url:"<?php echo Yii::app()->request->baseUrl . '/index.php?r=members/likecourse/add'?>",
@@ -81,7 +81,7 @@ $(function(){
         	},
 			success:function(data, status){
         		$(".liked").addClass('likeit');
-    			$(".liked a").text('关注');
+    			$(".liked a").text('喜欢');
     			$(".liked").unbind('click');
     			$(".liked").removeClass('liked');
     			
@@ -97,9 +97,9 @@ $(function(){
 <div id="content-left">
         <div class="course-detail">
         	<?php if($courseStarMy < 4){ ?>
-			<h3 class="result-desc"><span class="keyword"><?php echo $courseName;?></span> 开课详情 <span class="likeit cnc-button"><a courseid="<?php echo $courseId;?>">关注</a></span></h3>
+			<h3 class="result-desc"><span class="keyword"><?php echo $courseName;?></span> 开课详情 <span class="likeit cnc-button"><a courseid="<?php echo $courseId;?>">喜欢</a></span></h3>
 			<?php }else{ ?>
-			<h3 class="result-desc"><span class="keyword"><?php echo $courseName;?></span> 开课详情 <span class="liked cnc-button"><a courseid="<?php echo $courseId;?>">已关注</a></span></h3>
+			<h3 class="result-desc"><span class="keyword"><?php echo $courseName;?></span> 开课详情 <span class="liked cnc-button"><a courseid="<?php echo $courseId;?>">已喜欢</a></span></h3>
 			<?php  }?>
             <?php foreach ($actualClassList as $actualClass){?>
         	<div class="rel-course">
