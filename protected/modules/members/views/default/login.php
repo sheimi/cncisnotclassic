@@ -1,7 +1,7 @@
 <div id="content">
 <div id="login">
     <div class="form">
-    	<h1>看课登录</h1>
+    	<h1><?php echo CHtml::encode(Yii::app()->name); ?>登录</h1>
         <?php $form=$this->beginWidget('CActiveForm', array(
         	'id'=>'login-form-login-form',
         	'enableAjaxValidation'=>false,
