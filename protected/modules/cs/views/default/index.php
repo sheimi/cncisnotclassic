@@ -32,7 +32,7 @@
     		<a href="<?php echo Yii::app()->request->baseUrl . '/index.php?r=cs/books/viewbook&bid=' . $item['book']['book_id'];?>">
     			<img class="book_cover" alt="<?php echo $item['book']['book_name'];?>" src="<?php echo  $item['book']['cover_path'];?>" >
     		</a>
-    		<div class="name" title="<?php echo $item['course']['course_name'];?>">
+    		<div class="name" title="<?php echo $item['book']['book_name'];?>">
     		    <a href="<?php echo Yii::app()->request->baseUrl . '/index.php?r=cs/course/view&cid=' . $item['course']['course_id']?>">
     		       <span style=""><?php echo $item['book']['book_name'];?></span>
     			</a>
