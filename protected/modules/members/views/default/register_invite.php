@@ -2,24 +2,8 @@
     <h1>注册新用户</h1>
     <script type="text/javascript">
     	var validEmail, validUsername, validMajor;
-    	function verifyAddress(email)  
-　　　　　{  
-   　　　　　　var pattern = /^[a-zA-Z]([a-zA-Z0-9]*[-_.]?[a-zA-Z0-9]+)+@([\w-]+\.)+[a-zA-Z]{2,}$/;  
-   　　　　　　flag = pattern.test(email);  
-   　　　　　　if(flag)  
-   　　　　　　{  
-   　　　　　　	return true;  
-   　　　　　　}  else {  
-   　　　　　　　　return false;  
-   　　　　　　}  
-　　　　　 }  
 		$(function(){
 			$('#email').blur( function(){
-				if($('#email').val() != '' && !verifyAddress( $('#email').val() + "@smail.nju.edu.cn"))
-				{
-					$('#emailErr').html('邮箱格式不对');
-					return false;
-				}
     			$.ajax({
 					url:'index.php?r=members/default/checkemail',
 					data:{
@@ -80,17 +64,10 @@
 			$('#majors').change(function(event){
 			});
 
-
 			$('#registerSubmit').click(function(){
 				if($('#email').val() == '' || $('#email').val() == null)
 				{
 					$('#emailErr').html('学校邮箱不能为空');
-					return false;
-				}
-
-				if(!verifyAddress( $('#email').val() + "@smail.nju.edu.cn"))
-				{
-					$('#emailErr').html('邮箱格式不对');
 					return false;
 				}
 				if($('#username').val() == '' || $('#username').val() == null){
@@ -103,6 +80,11 @@
 					return false;
 				}
 
+				if($('#invite').val() == '' || $('#invite').val() == null)
+				{
+					$('#inviteErr').html('暂时只开放邀请注册，请输入邀请码');
+					return false;
+				}
 				return true;
 			});
 		});
@@ -144,6 +126,11 @@
     			<option value='-1'>请选择</option>
     		</select>
     		<span id="majorError" class="worry_tis"></span>
+    	</li>
+    	<li class="invite"><label class="lf">邀请码：</label>
+    		<input id="invite" name="invite" type="text" maxlength="32"
+    		class="text" value=""> <span id="inviteRule" class="tis">请输入邀请码</span>
+    		 &nbsp;&nbsp;&nbsp;&nbsp;<span id="inviteErr" class="worry_tis"></span>
     	</li>
     	<li class="btn">
     		<input id="registerSubmit" name="registerSubmit" type="submit"
