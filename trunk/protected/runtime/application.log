@@ -5827,3 +5827,51 @@ Stack trace:
 #10 D:\Workspace\php\cnc\framework\base\CApplication.php(155): CWebApplication->processRequest()
 #11 D:\Workspace\php\cnc\index.php(14): CApplication->run()
 #12 {main} REQUEST_URI=/cnc/index.php?r=members/default/newuser
+2011/09/18 14:21:55 [error] [system.db.CDbCommand] Error in querying SQL: SELECT  COUNT(cb_up_down_id) up_total, cb_id, b.*, u.* FROM cb_up_down cbud JOIN course_book cb ON cb.`c_b_id` = cbud.`cb_id` JOIN books b ON b.`book_id` = cb.`book_id` JOIN users u ON u.user_id = b.`provider` WHERE cb.`course_id` = '221730' GROUP BY cb.`book_id` ORDER BY up_total DESC , course_book.c_b_id DESCLIMIT 10
+in D:\Workspace\php\cnc\protected\modules\cs\controllers\CourseController.php (129)
+in D:\Workspace\php\cnc\protected\modules\cs\controllers\CourseController.php (95)
+in D:\Workspace\php\cnc\index.php (14)
+2011/09/18 14:21:55 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DESCLIMIT 10' at line 1' in D:\Workspace\php\cnc\framework\db\CDbCommand.php:471
+Stack trace:
+#0 D:\Workspace\php\cnc\framework\db\CDbCommand.php(354): CDbCommand->queryInternal('fetchAll', 2, Array)
+#1 D:\Workspace\php\cnc\protected\modules\cs\controllers\CourseController.php(129): CDbCommand->queryAll()
+#2 D:\Workspace\php\cnc\protected\modules\cs\controllers\CourseController.php(95): CourseController->getRelBook('221730', 10)
+#3 [internal function]: CourseController->actionView('221730')
+#4 D:\Workspace\php\cnc\framework\web\actions\CInlineAction.php(54): ReflectionMethod->invokeArgs(Object(CourseController), Array)
+#5 D:\Workspace\php\cnc\framework\web\CController.php(300): CInlineAction->run()
+#6 D:\Workspace\php\cnc\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 D:\Workspace\php\cnc\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#8 D:\Workspace\php\cnc\framework\web\CController.php(1088): CFilter->filter(Object(CFilterChain))
+#9 D:\Workspace\php\cnc\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#10 D:\Workspace\php\cnc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 D:\Workspace\php\cnc\framework\web\CController.php(283): CFilterChain->run()
+#12 D:\Workspace\php\cnc\framework\web\CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 D:\Workspace\php\cnc\framework\web\CWebApplication.php(328): CController->run('view')
+#14 D:\Workspace\php\cnc\framework\web\CWebApplication.php(121): CWebApplication->runController('cs/course/view')
+#15 D:\Workspace\php\cnc\framework\base\CApplication.php(155): CWebApplication->processRequest()
+#16 D:\Workspace\php\cnc\index.php(14): CApplication->run()
+#17 {main} REQUEST_URI=/cnc/index.php?r=cs/course/view&cid=221730
+2011/09/18 14:22:17 [error] [system.db.CDbCommand] Error in querying SQL: SELECT  COUNT(cb_up_down_id) up_total, cb_id, b.*, u.* FROM cb_up_down cbud JOIN course_book cb ON cb.`c_b_id` = cbud.`cb_id` JOIN books b ON b.`book_id` = cb.`book_id` JOIN users u ON u.user_id = b.`provider` WHERE cb.`course_id` = '221730' GROUP BY cb.`book_id` ORDER BY up_total DESC , cb.c_b_id DESCLIMIT 10
+in D:\Workspace\php\cnc\protected\modules\cs\controllers\CourseController.php (129)
+in D:\Workspace\php\cnc\protected\modules\cs\controllers\CourseController.php (95)
+in D:\Workspace\php\cnc\index.php (14)
+2011/09/18 14:22:17 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DESCLIMIT 10' at line 1' in D:\Workspace\php\cnc\framework\db\CDbCommand.php:471
+Stack trace:
+#0 D:\Workspace\php\cnc\framework\db\CDbCommand.php(354): CDbCommand->queryInternal('fetchAll', 2, Array)
+#1 D:\Workspace\php\cnc\protected\modules\cs\controllers\CourseController.php(129): CDbCommand->queryAll()
+#2 D:\Workspace\php\cnc\protected\modules\cs\controllers\CourseController.php(95): CourseController->getRelBook('221730', 10)
+#3 [internal function]: CourseController->actionView('221730')
+#4 D:\Workspace\php\cnc\framework\web\actions\CInlineAction.php(54): ReflectionMethod->invokeArgs(Object(CourseController), Array)
+#5 D:\Workspace\php\cnc\framework\web\CController.php(300): CInlineAction->run()
+#6 D:\Workspace\php\cnc\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#7 D:\Workspace\php\cnc\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#8 D:\Workspace\php\cnc\framework\web\CController.php(1088): CFilter->filter(Object(CFilterChain))
+#9 D:\Workspace\php\cnc\framework\web\filters\CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#10 D:\Workspace\php\cnc\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#11 D:\Workspace\php\cnc\framework\web\CController.php(283): CFilterChain->run()
+#12 D:\Workspace\php\cnc\framework\web\CController.php(257): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 D:\Workspace\php\cnc\framework\web\CWebApplication.php(328): CController->run('view')
+#14 D:\Workspace\php\cnc\framework\web\CWebApplication.php(121): CWebApplication->runController('cs/course/view')
+#15 D:\Workspace\php\cnc\framework\base\CApplication.php(155): CWebApplication->processRequest()
+#16 D:\Workspace\php\cnc\index.php(14): CApplication->run()
+#17 {main} REQUEST_URI=/cnc/index.php?r=cs/course/view&cid=221730

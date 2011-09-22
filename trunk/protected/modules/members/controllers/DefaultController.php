@@ -76,12 +76,11 @@ class DefaultController extends Controller
 	    $grade = $_POST['grade'];
 	    $major = $_POST['major'];
 	    
-	    $invite = $_POST['invite'];
+	    //$invite = $_POST['invite'];
 	    
-	    
-	    if(isset($email) && isset($username) && isset($grade) && isset($major) && isset($invite))
+	    if(isset($email) && isset($username) && isset($grade) && isset($major) )
 	    {
-	        
+    	    /**
 	        // 邀请码里面有l i l y 四个字母同时出现即可(顺序不限)
     	    if(!(strpos('x'.$invite, 'l') > 0
     	     && strpos('x'.$invite, 'i') > 0
@@ -97,7 +96,7 @@ class DefaultController extends Controller
         	         Yii::app()->end();
     	         }
     	    }
-    	    
+    	    */
 	        $row1 = Users::model()->findByAttributes(array(
 	            'username'=>$username
 	        ));
@@ -135,9 +134,9 @@ class DefaultController extends Controller
             if($return = $this->sendPwd($username, $email, $userpassword)){
                 if($userModel->save()){
                     $this->render('sendfinish', array('msg'=>'邮件发送完成<a href="http://smail.nju.edu.cn">到邮箱查看密码</a>'));
-                    $inviteModel = new Invite();
-                    $inviteModel->attributes = array('invite'=>$invite);
-                    $inviteModel->save();
+//                    $inviteModel = new Invite();
+//                    $inviteModel->attributes = array('invite'=>$invite);
+//                    $inviteModel->save();
                 }else{
                     $this->render('sendfinish', array('msg'=>$userModel->errors));
                 }

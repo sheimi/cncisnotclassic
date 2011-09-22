@@ -38,12 +38,10 @@
     </script>
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
-
 <body>
-
 <div class="container" id="page">
 	<div id="header">
-		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
+		<div id="logo"><a href="<?php echo Yii::app()->baseUrl;?>"><img  width="240" height="90" src="<?php echo Yii::app()->baseUrl . '/images/logo.png';?>"></img></a></div>
 	</div><!-- header -->
 
 	<div id="mainmenu">
@@ -51,7 +49,7 @@
 			'items'=>array(
 				array('label'=>'首页', 'url'=>array('/cs/default/index')),
 				array('label'=>'个人中心', 'url'=>array('/members/profile/index')),
-				array('label'=>'关于我们', 'url'=>array('/default/site/about')),
+				//array('label'=>'关于我们', 'url'=>array('/default/site/about')),
 				array('label'=>'项目反馈', 'url'=>array('/default/site/feedback')),
 				array('label'=>'登录', 'url'=>array('/members/default/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'登出 ('.Yii::app()->user->name.')', 'url'=>array('/members/default/logout'), 'visible'=>!Yii::app()->user->isGuest)
