@@ -25,6 +25,7 @@
     			$.ajax({
     	        	url:"<?php echo BU . "cs/search/query&type="; ?>" + queryId,
     	        	data:"q=" + q,
+    	        	dataType:"json" ,
     				success:function(data, status){
         				$('#result-list').html("").fadeOut('fast');
                 		$('#result-list').html(data).fadeIn('slow');
@@ -44,8 +45,8 @@
     
     <div id="search-result">
 	 	<ul class="sresult-type">
-    		<li  qid="course" class="active-sr">课程</li>
-    		<li  qid="teacher">教师</li>
+    		<li qid="course" class="active-sr">课程</li>
+    		<li qid="teacher">教师</li>
     		<li qid="book">课本</li>
     	</ul>
     	<hr>
