@@ -34,6 +34,7 @@ class SearchController extends Controller
 	}
 	
 	public function actionAll($q){
+	    $q = rawurldecode($q);
 	    if('' != $q){
 	        if (isset($_GET['page']) && is_numeric($_GET['page'])){
 	            $page = $_GET['page'];
@@ -87,6 +88,7 @@ class SearchController extends Controller
 	public function actionQuery(){
 	    if(isset($_GET['q']) && isset($_GET['type'])){
 	        $q = $_GET['q'];
+	        $q = rawurldecode($q);
 	        $memberId = Yii::app()->user->getState('user_id');
 	        $type = $_GET['type'];
 	        switch ($type){

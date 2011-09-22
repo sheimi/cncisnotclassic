@@ -24,8 +24,7 @@
     			var queryId = $(this).attr('qid');
     			$.ajax({
     	        	url:"<?php echo BU . "cs/search/query&type="; ?>" + queryId,
-    	        	data:"q=" + q,
-    	        	dataType:"json" ,
+    	        	data:"q=" + encodeURIComponent(q),
     				success:function(data, status){
         				$('#result-list').html("").fadeOut('fast');
                 		$('#result-list').html(data).fadeIn('slow');
