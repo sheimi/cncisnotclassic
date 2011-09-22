@@ -69,6 +69,7 @@
 			<div id="other-proj">
 				<ul>
 					<li><a href="http://www.lilystudio.org">小百合工作室主页</a></li>
+					<li><a href="http://classic.njuer.us/">工作室@人人 (南百合)</a></li>
 					<li><a href="http://classic.njuer.us/">ClassIC</a></li>
 					<li><a href="http://lib.lilystudio.org/">手机图书馆</a></li>
 					<li><a href="http://blog.njulily.com">百合有聊</a></li>
