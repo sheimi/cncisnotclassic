@@ -116,7 +116,7 @@
     	<li style="color:#aaa; ">
     	@smail.nju.edu.cn的邮箱为南京大学邮箱，帐户名为b加上学号，密码默认为身份证号。
     	<a href="http://smail.nju.edu.cn" target="_blank">南大邮箱直通车</a></li>
-    	<li class="username"><label class="lf">昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称：</label>
+    	<li class="username"><label class="lf">用户名：</label>
     		<input id="username" name="username" type="text" maxlength="32"
     		class="text" value=""> <span id="usernameRule" class="tis">请输入1-20位数字、字母</span>
     		 &nbsp;&nbsp;&nbsp;&nbsp;<span id="usernameErr" class="worry_tis"></span>
@@ -125,7 +125,7 @@
     	<li class="grade">
     		<label class="lf">入学时间：</label>
 			<select name="grade">
-				<?php for ($year = 2000; $year <= date('Y'); $year++){?>
+				<?php for ($year = 2007; $year <= date('Y'); $year++){?>
 				<option value="<?php echo $year;?>"><?php echo $year;?></option>
 				<?php }?>
 			</select>

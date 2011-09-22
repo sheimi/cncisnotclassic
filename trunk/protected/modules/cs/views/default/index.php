@@ -39,7 +39,6 @@
     		</div>
     	</div>
     	
-    	<!-- 每六本书一排 加个clear_float -->
     	<?php if($i++ == 5){?>
     	<div class="clear_float"></div>
     	<?php }?>

@@ -197,10 +197,14 @@ class DefaultController extends Controller
         $mailer->FromName = 'njulilyadmin';
         $mailer->Username = 'njulilyadmin';    //这里输入发件地址的用户名
         $mailer->Password = 'llstudio@NJU109';    //这里输入发件地址的密码
+        $mailer->IsHTML(true); 
 //        $mailer->SMTPDebug = true;   //设置SMTPDebug为true，就可以打开Debug功能，根据提示去修改配置
         $mailer->CharSet = 'UTF-8';
-        $mailer->Subject = Yii::t('demo', 'CNC注册邮件');
-        $message = "感谢您注册 （看课），你的用户名为：$username, 您的登录密码为：$password";
+        $mailer->Subject = Yii::t('demo', 'ClassIC(看课)注册邮件');
+        $message = "感谢您注册 （看课）</a>！
+        <br/>您的用户名为：$username
+        <br/>登录密码为：$password
+        <br/>登陆地址：<a href='http://kk.njuer.us'>ClassIC(看课)</a>";
         $mailer->Body = $message;
         if ($mailer->Send()) {
         	return true;
