@@ -200,7 +200,7 @@ class DefaultController extends Controller
 //        $mailer->SMTPDebug = true;   //设置SMTPDebug为true，就可以打开Debug功能，根据提示去修改配置
         $mailer->CharSet = 'UTF-8';
         $mailer->Subject = Yii::t('demo', 'CNC注册邮件');
-        $message = "感谢您注册CNC, 您的登录密码为：$password";
+        $message = "感谢您注册 （看课），你的用户名为：$username, 您的登录密码为：$password";
         $mailer->Body = $message;
         if ($mailer->Send()) {
         	return true;
