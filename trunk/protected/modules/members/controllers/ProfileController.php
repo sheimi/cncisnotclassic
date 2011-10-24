@@ -144,7 +144,7 @@ class ProfileController extends Controller
 	        $book = array();
 	        $book['book_name'] = $row->book_name;
 	        $book['cover_path'] = $row->cover_path;
-	        $book['book_id'] = $row->book_name;
+	        $book['book_id'] = $row->book_id;
 	        $book['add_time'] = $row->add_time;
 	        $book['image'] = $row->cover_path;
 	        $bookList[] = $book;
