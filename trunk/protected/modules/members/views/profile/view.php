@@ -42,7 +42,7 @@
         	<?php foreach ($ownBookList as $book){?>
         		<div class="book">
         			<img title="<?php echo $book['book_name'];?>" src="<?php echo $book['image'];?>">
-        			<div  title="<?php echo $book['book_name'];?>" ><a  href="<?php echo BU . "cs/books/viewbook&bid=" . $book['book_id'];><?php echo $book['book_name'];?></a></div>
+        			<div  title="<?php echo $book['book_name'];?>" ><a  href="<?php echo BU . "cs/books/viewbook&bid=" . $book['book_id'];?>"><?php echo $book['book_name'];?></a></div>
         		</div>
         	<?php }?>
         	<div class="clear_float"></div>
