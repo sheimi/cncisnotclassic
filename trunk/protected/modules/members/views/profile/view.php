@@ -25,7 +25,7 @@
     	<div class="content-box">
         	<?php foreach ($recommendBookList as $book){?>
         		<div class="book">
-        			<a href="<?php echo BU . "cs/books/viewbook&bid=" . $book['id'];?>">
+        			<a href="<?php echo BU . "cs/books/viewbook&bid=" . $book['book_id'];?>">
         				<img title="<?php echo $book['book_name'];?>" src="<?php echo $book['image'];?>">
         			</a>
         			<div  title="<?php echo $book['book_name'];?>" ><?php echo $book['book_name'];?></div>
@@ -37,7 +37,7 @@
      <!-- 他推荐的书 -->
      
     <div id="ownbook">
-    	<div class="box-title"><?php echo Yii::app()->user->getState('username');?>标记为有的参考书</div>
+    	<div class="box-title"><?php echo $userInfo['username']; ?> 标记为有的参考书</div>
         <div class="content-box">
         	<?php foreach ($ownBookList as $book){?>
         		<div class="book">
